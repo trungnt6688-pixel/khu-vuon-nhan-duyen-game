@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khu Vườn Nhân Duyên</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #34543b;
+  background: #f5f8ed;
+}
+header {
+  text-align: center;
+  padding: 28px 15px;
+  background: #fffdf5;
+}
+.logo { font-size: 42px; }
+h1 { margin: 8px 0; color: #39764b; }
+header p { color: #8b936f; margin: 8px 0; }
+main { max-width: 950px; margin: auto; padding: 20px; }
+.garden {
+  min-height: 330px;
+  border-radius: 24px;
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(#b9dfc1, #e3e9bb 65%, #91bb78);
+  box-shadow: 0 8px 25px #547b4920;
+  position: relative;
+  overflow: hidden;
+}
+.sun { font-size: 42px; text-align: right; }
+.landscape { font-size: 58px; margin-top: 20px; }
+.tree { font-size: 90px; margin: 8px; }
+.garden h2 { color: #315c3a; }
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 23px;
+  margin-top: 18px;
+  box-shadow: 0 5px 20px #56734c12;
+}
+.card h2 { color: #43804c; margin-top: 0; }
+.task { background: #f5f8ed; padding: 15px; border-radius: 12px; }
+button {
+  background: #548c59;
+  color: white;
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+button:disabled { background: #9aaa91; cursor: default; }
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.stat { text-align: center; }
+.stat strong { display: block; font-size: 24px; color: #548c59; }
+#message { color: #548c59; font-weight: bold; }
+footer { text-align: center; padding: 25px; color: #89957d; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🌱</div>
+  <h1>KHU VƯỜN NHÂN DUYÊN</h1>
+  <p>Một hạt giống nhỏ – Ngàn điều tốt đẹp.</p>
+</header>
+
+<main>
+  <section class="garden">
+    <div class="sun">☀️</div>
+    <h2>Chào mừng bạn đến khu vườn!</h2>
+    <p>Nơi mỗi hành động tử tế đều có thể nảy mầm.</p>
+    <div class="landscape">🌳　🌸　🪷</div>
+    <div class="tree" id="tree">🌱</div>
+    <p id="treeStatus">Một hạt giống đang chờ bạn chăm sóc.</p>
+  </section>
+
+  <section class="card">
+    <h2>🌼 Hạt giống tử tế hôm nay</h2>
+    <div class="task">
+      <h3>❤️ Gọi điện hỏi thăm cha mẹ</h3>
+      <p>Một cuộc gọi nhỏ có thể mang đến niềm vui lớn cho người thân.</p>
+    </div>
+    <button id="plantButton" onclick="plantSeed()">
+      🌱 Tôi đã hoàn thành việc tử tế
+    </button>
+    <p id="message"></p>
+  </section>
+
+  <section class="card">
+    <h2>🌳 Hành trình khu vườn</h2>
+    <div class="stats">
+      <div class="stat">
+        <strong id="days">0</strong>
+        Ngày gieo hạt
+      </div>
+      <div class="stat">
+        <strong id="level">1</strong>
+        Cấp độ cây
+      </div>
+      <div class="stat">
+        <strong id="seeds">0</strong>
+        Hạt tử tế
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  🌿 Gieo một điều tốt đẹp hôm nay, để ngày mai thế giới thêm xanh.
+</footer>
+
+<script>
+let days = Number(localStorage.getItem("gardenDays") || 0);
+let seeds = Number(localStorage.getItem("gardenSeeds") || 0);
+let lastDate = localStorage.getItem("gardenLastDate") || "";
+
+function updateGarden() {
+  document.getElementById("days").textContent = days;
+  document.getElementById("seeds").textContent = seeds;
+  document.getElementById("level").textContent =
+    Math.floor(seeds / 3) + 1;
+
+  let tree = "🌱";
+  if (seeds >= 9) tree = "🌳";
+  else if (seeds >= 3) tree = "🌿";
+
+  document.getElementById("tree").textContent = tree;
+
+  let done = lastDate === new Date().toDateString();
+  document.getElementById("plantButton").disabled = done;
+  document.getElementById("plantButton").textContent =
+    done ? "Bạn đã gieo hạt hôm nay ❤️" :
+    "🌱 Tôi đã hoàn thành việc tử tế";
+}
+
+function plantSeed() {
+  let today = new Date().toDateString();
+
+  if (lastDate === today) return;
+
+  seeds++;
+  days++;
+  lastDate = today;
+
+  localStorage.setItem("gardenDays", days);
+  localStorage.setItem("gardenSeeds", seeds);
+  localStorage.setItem("gardenLastDate", lastDate);
+
+  document.getElementById("treeStatus").textContent =
+    "Cảm ơn bạn! Một điều tốt đẹp đã được gieo.";
+  document.getElementById("message").textContent =
+    "🌸 Hạt giống tử tế đã nảy mầm trong khu vườn!";
+
+  updateGarden();
+}
+
+updateGarden();
+</script>
+</body>
+</html>
