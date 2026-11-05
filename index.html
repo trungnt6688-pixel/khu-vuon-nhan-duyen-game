@@ -8,14 +8,11 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Georgia,serif;
- color:#f8f4df;
+ margin:0;font-family:Georgia,serif;color:#f8f4df;
  background:#102b2c;
 }
 header{
- text-align:center;
- padding:25px 12px;
+ text-align:center;padding:25px 12px;
  background:linear-gradient(135deg,#173c35,#315d45,#193b3d);
  border-bottom:2px solid #c9ad62;
 }
@@ -24,37 +21,47 @@ h1{color:#f3d98b;margin:8px 0;font-size:clamp(23px,4vw,36px)}
 header p{color:#e6dfbf;margin:5px}
 main{max-width:1100px;margin:auto;padding:18px}
 .scene{
- position:relative;
- min-height:480px;
- overflow:hidden;
- border:2px solid #c7ad69;
- border-radius:22px;
+ position:relative;min-height:480px;overflow:hidden;
+ border:2px solid #c7ad69;border-radius:22px;
  text-align:center;
- background:
- radial-gradient(circle at 80% 15%,#fff1b5 0 2%,transparent 3%),
- linear-gradient(#253e57 0%,#596d70 40%,#78966d 72%,#315c43 100%);
+ background:linear-gradient(#253e57 0%,#596d70 40%,#78966d 72%,#315c43 100%);
 }
 .moon{
  position:absolute;right:12%;top:35px;
  width:65px;height:65px;border-radius:50%;
- background:#f8e6a9;
- box-shadow:0 0 35px #ffe8a1;
+ background:#f8e6a9;box-shadow:0 0 35px #ffe8a1;
 }
-.stars{position:absolute;inset:0;font-size:17px;color:#fff4bb;letter-spacing:23px;line-height:45px;opacity:.8}
+.stars{
+ position:absolute;inset:0;font-size:17px;
+ color:#fff4bb;letter-spacing:23px;line-height:45px;opacity:.8;
+}
 .mountains{
  position:absolute;bottom:135px;left:0;width:100%;
- font-size:90px;letter-spacing:-20px;
- opacity:.65;
+ font-size:90px;letter-spacing:-20px;opacity:.65;
 }
 .temple{
  position:absolute;bottom:135px;left:12%;
- font-size:66px;
- filter:drop-shadow(0 0 10px #f5d98c);
+ font-size:66px;filter:drop-shadow(0 0 10px #f5d98c);
 }
 .tree{
  position:absolute;bottom:105px;right:12%;
  font-size:95px;
  filter:drop-shadow(0 0 14px #d9eaa1);
+ transition:all .7s ease;
+}
+.tree.magical{animation:glow 2s infinite alternate}
+.tree.magical:after{
+ content:"✨ 🌸";position:absolute;top:-25px;left:-15px;
+ font-size:27px;white-space:nowrap;
+}
+.tree.ancient{animation:glow 1.5s infinite alternate}
+.tree.ancient:after{
+ content:"✨ 🌸 🦋";position:absolute;top:-30px;left:-25px;
+ font-size:25px;white-space:nowrap;
+}
+@keyframes glow{
+ from{filter:drop-shadow(0 0 10px #d9eaa1)}
+ to{filter:drop-shadow(0 0 30px #ffe69a)}
 }
 .pond{
  position:absolute;bottom:0;left:0;width:100%;height:120px;
@@ -64,31 +71,39 @@ main{max-width:1100px;margin:auto;padding:18px}
 .lotus{position:relative;top:18px;font-size:38px;letter-spacing:18px}
 .path{position:absolute;bottom:100px;left:40%;font-size:30px}
 .welcome{
- position:relative;z-index:2;
- padding:25px 10px;
+ position:relative;z-index:2;padding:25px 10px;
  text-shadow:0 2px 8px #193b36;
 }
 .welcome h2{color:#fff0b6}
 .card{
  background:#f8f4e8;color:#365443;
- border-radius:18px;padding:22px;
- margin-top:18px;
+ border-radius:18px;padding:22px;margin-top:18px;
  box-shadow:0 6px 20px #0003;
 }
 .card h2{color:#44784f;margin-top:0}
-.task{
- background:#eaf0dc;padding:16px;
- border-radius:12px;
-}
+.task{background:#eaf0dc;padding:16px;border-radius:12px}
 button{
  background:#54875d;color:white;border:0;
  padding:13px 20px;border-radius:25px;
  font-size:15px;cursor:pointer;margin-top:12px;
 }
 button:disabled{background:#8b9b83;cursor:default}
-.stats{display:flex;justify-content:space-around;gap:15px;flex-wrap:wrap;text-align:center}
+.stats{
+ display:flex;justify-content:space-around;
+ gap:15px;flex-wrap:wrap;text-align:center;
+}
 .stat strong{display:block;font-size:27px;color:#4b8657}
 #message{font-weight:bold;color:#4b8657}
+#stageName{color:#9a7432;font-weight:bold;margin-top:15px}
+#progressText{color:#54745a;margin-top:8px}
+.progress{
+ height:12px;background:#dce5d2;border-radius:20px;
+ overflow:hidden;margin-top:8px;
+}
+#progressBar{
+ height:100%;width:0%;background:#78a85e;
+ transition:width .5s;
+}
 footer{text-align:center;padding:25px;color:#e7d9a6}
 </style>
 </head>
@@ -109,7 +124,7 @@ footer{text-align:center;padding:25px;color:#e7d9a6}
   </div>
   <div class="mountains">⛰️　🏔️　⛰️</div>
   <div class="temple">🛕</div>
-  <div class="tree" id="tree">🌱</div>
+  <div class="tree" id="tree">🌰</div>
   <div class="path">🪨　🪨　🪨</div>
   <div class="pond">
    <div class="lotus">🪷　🪷　🪷</div>
@@ -135,6 +150,9 @@ footer{text-align:center;padding:25px;color:#e7d9a6}
    <div class="stat"><strong id="level">1</strong>Cấp độ cây</div>
    <div class="stat"><strong id="seeds">0</strong>Hạt tử tế</div>
   </div>
+  <h3 id="stageName">🌰 Hạt giống</h3>
+  <p id="progressText">Hãy gieo hạt tử tế đầu tiên!</p>
+  <div class="progress"><div id="progressBar"></div></div>
  </section>
 </main>
 
@@ -150,12 +168,40 @@ let lastDate=localStorage.getItem("gardenLastDate")||"";
 function updateGarden(){
  document.getElementById("days").textContent=days;
  document.getElementById("seeds").textContent=seeds;
- document.getElementById("level").textContent=Math.floor(seeds/3)+1;
 
- let tree="🌱";
- if(seeds>=9)tree="🌳";
- else if(seeds>=3)tree="🌿";
- document.getElementById("tree").textContent=tree;
+ let tree="🌰";
+ let level=1;
+ let name="🌰 Hạt giống";
+ let next=1;
+ let treeClass="";
+
+ if(seeds>=20){
+  tree="🌳";level=6;name="✨ Cổ thụ huyền ảo";next=20;
+  treeClass="ancient";
+ }else if(seeds>=10){
+  tree="🌳";level=5;name="🌳 Cây nhân duyên";next=20;
+  treeClass="magical";
+ }else if(seeds>=6){
+  tree="🌳";level=4;name="🌳 Cây trưởng thành";next=10;
+ }else if(seeds>=3){
+  tree="🌿";level=3;name="🌿 Cây con";next=6;
+ }else if(seeds>=1){
+  tree="🌱";level=2;name="🌱 Mầm non";next=3;
+ }
+
+ document.getElementById("level").textContent=level;
+ let treeElement=document.getElementById("tree");
+ treeElement.textContent=tree;
+ treeElement.className="tree "+treeClass;
+ document.getElementById("stageName").textContent=name;
+
+ let percent=seeds>=20?100:
+ Math.min(100,Math.round((seeds-(level===1?0:level===2?0:level===3?3:level===4?6:10))/(next-(level===1?0:level===2?0:level===3?3:level===4?6:10))*100));
+
+ document.getElementById("progressBar").style.width=percent+"%";
+ document.getElementById("progressText").textContent=
+ seeds>=20?"Khu vườn đã có cổ thụ huyền ảo!":
+ "Còn "+Math.max(0,next-seeds)+" hạt nữa để phát triển cấp tiếp theo.";
 
  let done=lastDate===new Date().toDateString();
  document.getElementById("plantButton").disabled=done;
@@ -163,17 +209,22 @@ function updateGarden(){
  "Bạn đã gieo hạt hôm nay ❤️":
  "🌱 Tôi đã hoàn thành việc tử tế";
 }
+
 function plantSeed(){
  let today=new Date().toDateString();
  if(lastDate===today)return;
+
  seeds++;
  days++;
  lastDate=today;
+
  localStorage.setItem("gardenDays",days);
  localStorage.setItem("gardenSeeds",seeds);
  localStorage.setItem("gardenLastDate",lastDate);
+
  document.getElementById("message").textContent=
  "🌸 Cảm ơn bạn! Một điều tốt đẹp đã được gieo.";
+
  updateGarden();
 }
 updateGarden();
