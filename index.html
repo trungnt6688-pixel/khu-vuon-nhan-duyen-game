@@ -55,6 +55,7 @@ nav button{
   color:#315b43;
   border-radius:22px;
   font-size:14px;
+  cursor:pointer;
 }
 nav button.active{
   background:#e9ce86;
@@ -65,7 +66,7 @@ main{max-width:1050px;margin:auto;padding:16px}
 .panel{display:none}
 .panel.active{display:block}
 
-/* KHU VƯỜN */
+/* KHUNG KHU VƯỜN */
 .scene{
   height:410px;
   position:relative;
@@ -74,8 +75,8 @@ main{max-width:1050px;margin:auto;padding:16px}
   border-radius:24px;
   text-align:center;
   background:linear-gradient(
-    #253f59 0%,
-    #627b78 48%,
+    #172747 0%,
+    #526f79 48%,
     #9caf83 75%,
     #315b43 100%
   );
@@ -108,16 +109,15 @@ main{max-width:1050px;margin:auto;padding:16px}
   background:#fff0bd;
   box-shadow:0 0 35px #fff0bd;
   animation:moonGlow 4s infinite alternate;
-  transition:all 1s;
+}
+@keyframes moonGlow{
+  to{box-shadow:0 0 60px 12px #fff0bd}
 }
 .scene.day .moon{
   background:#ffe58b;
   box-shadow:0 0 45px #fff2a8;
   width:68px;
   height:68px;
-}
-@keyframes moonGlow{
-  to{box-shadow:0 0 60px 12px #fff0bd}
 }
 .stars{
   position:absolute;
@@ -143,97 +143,86 @@ main{max-width:1050px;margin:auto;padding:16px}
   font-size:58px;
   filter:drop-shadow(0 0 8px #ffe5a0);
 }
+.welcome{
+  position:relative;
+  z-index:5;
+  padding:23px 10px;
+  color:#fff8df;
+  text-shadow:0 2px 8px #173b35;
+}
+.welcome h2{color:#fff0b6;margin:0 0 8px}
 .tree{
   position:absolute;
   bottom:83px;
   right:13%;
   font-size:90px;
-  z-index:3;
+  z-index:4;
   filter:drop-shadow(0 0 13px #dff3a5);
   transition:transform .7s,filter .7s;
   transform-origin:bottom center;
 }
-.tree.glow{
-  animation:treeGlow 2s infinite alternate;
-}
+.tree.glow{animation:treeGlow 2s infinite alternate}
 @keyframes treeGlow{
   to{
     filter:drop-shadow(0 0 28px #ffe69a);
     transform:scale(1.08);
   }
 }
-.tree.bloom{
-  filter:drop-shadow(0 0 18px #ffb8d2);
-}
-.welcome{
-  position:relative;
-  z-index:4;
-  padding:23px 10px;
-  color:#fff8df;
-  text-shadow:0 2px 8px #173b35;
-}
-.welcome h2{color:#fff0b6;margin:0 0 8px}
-.garden-caption{
-  position:absolute;
-  bottom:112px;
-  left:0;
-  right:0;
-  color:#fff8df;
-  font-size:13px;
-  z-index:4;
-  text-shadow:0 1px 5px #183d32;
-}
+.tree.bloom{filter:drop-shadow(0 0 18px #ffb8d2)}
 
-/* HỒ SEN */
-.pond{
+/* CÀNH CÂY CHO CHIM ĐẬU */
+.branch{
   position:absolute;
-  bottom:0;
-  height:105px;
-  width:100%;
-  background:linear-gradient(#76aaa0,#326b62);
-  border-top:3px solid #d1dda9;
-  z-index:2;
-  overflow:hidden;
-}
-.water-wave{
-  position:absolute;
-  top:12px;
-  left:-20%;
-  width:140%;
-  height:35px;
-  border-top:2px solid #d8f4df88;
+  z-index:3;
+  right:12%;
+  bottom:177px;
+  width:150px;
+  height:8px;
+  background:linear-gradient(#80502e,#4b321e);
   border-radius:50%;
-  animation:wave 6s linear infinite;
+  transform:rotate(-7deg);
+  box-shadow:0 3px 5px #172b1c66;
 }
-.water-wave.two{
-  top:32px;
-  animation-delay:2s;
-  opacity:.6;
-}
-@keyframes wave{
-  0%{transform:translateX(-5%)}
-  50%{transform:translateX(5%)}
-  100%{transform:translateX(-5%)}
-}
-.lotus{
-  position:relative;
-  z-index:2;
-  padding-top:15px;
-  font-size:34px;
-  letter-spacing:15px;
-  animation:lotusFloat 4s ease-in-out infinite;
-}
-@keyframes lotusFloat{
-  50%{transform:translateY(-5px)}
-}
-.lily-leaves{
+.branch:before{
+  content:"";
   position:absolute;
-  bottom:5px;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  font-size:26px;
-  opacity:.9;
+  left:30px;
+  top:-23px;
+  width:5px;
+  height:28px;
+  background:#80502e;
+  border-radius:5px;
+  transform:rotate(-35deg);
+}
+.branch:after{
+  content:"";
+  position:absolute;
+  right:24px;
+  top:-18px;
+  width:5px;
+  height:22px;
+  background:#80502e;
+  border-radius:5px;
+  transform:rotate(32deg);
+}
+.bird-perch{
+  position:absolute;
+  z-index:6;
+  right:22%;
+  bottom:182px;
+  font-size:28px;
+  animation:birdBob 3s ease-in-out infinite;
+  filter:drop-shadow(0 2px 3px #203d28);
+}
+.bird-perch.second{
+  right:30%;
+  bottom:174px;
+  font-size:22px;
+  animation-delay:1s;
+}
+@keyframes birdBob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
 }
 
 /* HOA NỞ */
@@ -269,7 +258,7 @@ main{max-width:1050px;margin:auto;padding:16px}
 /* BƯỚM BAY */
 .butterfly{
   position:absolute;
-  z-index:5;
+  z-index:6;
   font-size:27px;
   user-select:none;
 }
@@ -297,31 +286,89 @@ main{max-width:1050px;margin:auto;padding:16px}
   75%{transform:translate(20px,30px) rotate(12deg)}
 }
 
-/* CHIM ĐẬU TRÊN CÀNH */
-.bird-perch{
+/* HỒ SEN */
+.pond{
   position:absolute;
-  z-index:5;
-  right:22%;
-  bottom:168px;
-  font-size:29px;
-  animation:birdBob 3s ease-in-out infinite;
-  filter:drop-shadow(0 2px 3px #203d28);
+  bottom:0;
+  height:105px;
+  width:100%;
+  background:linear-gradient(#76aaa0,#326b62);
+  border-top:3px solid #d1dda9;
+  z-index:2;
+  overflow:hidden;
 }
-.bird-perch.second{
-  right:31%;
-  bottom:155px;
-  font-size:22px;
-  animation-delay:1s;
+.water-wave{
+  position:absolute;
+  top:12px;
+  left:-20%;
+  width:140%;
+  height:35px;
+  border-top:2px solid #d8f4df88;
+  border-radius:50%;
+  animation:wave 6s linear infinite;
 }
-@keyframes birdBob{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
+.water-wave.two{
+  top:32px;
+  animation-delay:2s;
+  opacity:.6;
+}
+@keyframes wave{
+  0%{transform:translateX(-5%)}
+  50%{transform:translateX(5%)}
+  100%{transform:translateX(-5%)}
+}
+.lotus{
+  position:relative;
+  z-index:3;
+  padding-top:12px;
+  font-size:31px;
+  letter-spacing:12px;
+  animation:lotusFloat 4s ease-in-out infinite;
+}
+@keyframes lotusFloat{
+  50%{transform:translateY(-5px)}
+}
+
+/* LÁ SEN VẼ BẰNG CSS, KHÔNG DÙNG KÝ TỰ LỖI */
+.lily-leaf{
+  position:absolute;
+  bottom:8px;
+  width:30px;
+  height:15px;
+  background:linear-gradient(135deg,#9acb69,#3f874f);
+  border:2px solid #275c40;
+  border-radius:100% 0 100% 0;
+  transform:rotate(-15deg);
+}
+.lily-leaf:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:2px;
+  width:1px;
+  height:10px;
+  background:#d6e9a1;
+  transform:rotate(35deg);
+}
+.leaf-one{left:10%}
+.leaf-two{left:31%;bottom:18px}
+.leaf-three{left:67%}
+.leaf-four{right:8%;bottom:19px}
+.garden-caption{
+  position:absolute;
+  bottom:112px;
+  left:0;
+  right:0;
+  color:#fff8df;
+  font-size:13px;
+  z-index:7;
+  text-shadow:0 1px 5px #183d32;
 }
 
 /* ĐOM ĐÓM */
 .firefly{
   position:absolute;
-  z-index:4;
+  z-index:5;
   color:#fff7a8;
   text-shadow:0 0 12px #fff4a0;
   animation:fireflyFloat 5s infinite ease-in-out;
@@ -333,10 +380,10 @@ main{max-width:1050px;margin:auto;padding:16px}
   50%{transform:translate(15px,-25px);opacity:.35}
 }
 
-/* NÚT NGÀY ĐÊM */
+/* NÚT CHUYỂN NGÀY ĐÊM */
 .scene-control{
   position:absolute;
-  z-index:8;
+  z-index:9;
   right:12px;
   top:12px;
   border:1px solid #fff0bd;
@@ -478,6 +525,7 @@ footer{
   padding:12px;
   margin-top:12px;
 }
+
 @media(max-width:560px){
   main{padding:11px}
   .scene{height:370px}
@@ -486,19 +534,20 @@ footer{
   .card{padding:16px}
   .badges{grid-template-columns:repeat(2,1fr)}
   nav button{font-size:13px;padding:9px 11px}
-  .bird-perch{right:23%;bottom:155px}
+  .branch{right:10%;width:120px}
+  .bird-perch{right:21%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
   }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="logo">🌱</div>
   <h1>KHU VƯỜN NHÂN DUYÊN</h1>
@@ -515,6 +564,7 @@ footer{
 </nav>
 
 <main>
+
 <section id="garden" class="panel active">
 
   <div class="scene night" id="gardenScene">
@@ -536,41 +586,47 @@ footer{
 
     <div class="tree" id="tree">🌱</div>
 
-    <!-- Hoa nở trong khu vườn -->
+    <!-- CÀNH CÂY VÀ CHIM -->
+    <div class="branch"></div>
+    <span class="bird-perch">🐦</span>
+    <span class="bird-perch second">🐤</span>
+
+    <!-- HOA TRONG VƯỜN -->
     <div class="flower one">🌸</div>
     <div class="flower two">🌼</div>
     <div class="flower three">🌺</div>
     <div class="flower four">🌷</div>
 
-    <!-- Cánh hoa bay -->
+    <!-- CÁNH HOA BAY -->
     <div class="flower-petal petal-one">🌸</div>
     <div class="flower-petal petal-two">🌼</div>
     <div class="flower-petal petal-three">🌺</div>
 
-    <!-- Bướm bay -->
+    <!-- BƯỚM BAY -->
     <span class="butterfly b1">🦋</span>
     <span class="butterfly b2">🦋</span>
     <span class="butterfly b3">🦋</span>
 
-    <!-- Chim đậu trên cành -->
-    <span class="bird-perch">🐦</span>
-    <span class="bird-perch second">🐤</span>
-
-    <!-- Đom đóm -->
+    <!-- ĐOM ĐÓM -->
     <span class="firefly f1">✦</span>
     <span class="firefly f2">✧</span>
     <span class="firefly f3">✦</span>
 
     <div class="garden-caption" id="gardenCaption">
-      Mầm non đang đón ánh trăng
+      Khu vườn bình yên đang đón ánh trăng
     </div>
 
-    <!-- Hồ sen -->
+    <!-- HỒ SEN -->
     <div class="pond">
       <div class="water-wave"></div>
       <div class="water-wave two"></div>
-      <div class="lotus" id="lotus">🪷　🪷　🪷</div>
-      <div class="lily-leaves">🍃　🍃　🍃　🍃　🍃</div>
+
+      <div class="lotus" id="lotus">🌸　🌸　🌸</div>
+
+      <div class="lily-leaf leaf-one"></div>
+      <div class="lily-leaf leaf-two"></div>
+      <div class="lily-leaf leaf-three"></div>
+      <div class="lily-leaf leaf-four"></div>
     </div>
 
   </div>
@@ -595,21 +651,26 @@ footer{
 
     <div class="stage" id="stage">🌰 Hạt giống</div>
     <p class="muted" id="nextText">Hãy gieo hạt tử tế đầu tiên.</p>
+
     <div class="progress">
       <div id="progressBar"></div>
     </div>
+
     <div class="level-note" id="levelNote">
       🌱 Mỗi hành động tử tế giúp khu vườn thêm sức sống.
     </div>
+
     <p id="message" aria-live="polite"></p>
   </div>
 
   <div class="card">
     <h2>❤️ Việc tử tế hôm nay</h2>
     <p id="todayTask">Gọi điện hỏi thăm cha mẹ</p>
+
     <button class="action" id="completeToday">
       Tôi đã làm việc này 💚
     </button>
+
     <p class="notice">
       Mỗi ngày chỉ ghi nhận một lần để khuyến khích hành động chân thành,
       không chạy theo điểm số.
@@ -696,13 +757,16 @@ footer{
 <section id="mindful" class="panel">
   <div class="card">
     <h2>🪷 Một phút tĩnh tâm</h2>
+
     <div class="quote" id="quote">
       Thở vào, tôi biết mình đang thở vào.
       Thở ra, tôi mỉm cười.
     </div>
+
     <p style="text-align:center">
       <button class="action" id="newQuote">Một lời nhắc khác</button>
     </p>
+
     <p class="notice">
       Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng.
       Không cần vội vàng trở thành ai khác.
@@ -717,9 +781,11 @@ footer{
 </footer>
 
 <script>
-/* =====================================
-   ĐỌC DỮ LIỆU CŨ - KHÔNG XÓA DỮ LIỆU
-===================================== */
+
+/* =================================
+   ĐỌC DỮ LIỆU ĐANG CÓ
+   KHÔNG XÓA HOẶC ĐẶT LẠI DỮ LIỆU
+================================= */
 
 const get=(k,d)=>{
   try{
@@ -750,9 +816,9 @@ const tasks=[
 
 const today=()=>new Date().toDateString();
 
-/* =====================================
+/* =================================
    CẤP ĐỘ CÂY
-===================================== */
+================================= */
 
 function levelInfo(){
 
@@ -784,9 +850,9 @@ function levelInfo(){
     'Hạt giống đang chờ một hành động tử tế đầu tiên.'];
 }
 
-/* =====================================
-   HIỆU ỨNG NGÀY VÀ ĐÊM
-===================================== */
+/* =================================
+   NGÀY VÀ ĐÊM
+================================= */
 
 let manualScene=null;
 
@@ -814,26 +880,27 @@ function updateDayNight(){
     : 'Ánh trăng soi sáng khu vườn bình yên';
 }
 
-document.getElementById('sceneToggle').addEventListener('click',()=>{
+document.getElementById('sceneToggle')
+  .addEventListener('click',()=>{
 
-  const scene=document.getElementById('gardenScene');
+    const scene=document.getElementById('gardenScene');
 
-  manualScene=scene.classList.contains('day')
-    ? 'night'
-    : 'day';
+    manualScene=scene.classList.contains('day')
+      ? 'night'
+      : 'day';
 
-  updateDayNight();
-});
+    updateDayNight();
+  });
 
-/* Tự kiểm tra lại theo giờ trên máy tính */
 updateDayNight();
+
 setInterval(()=>{
   if(manualScene===null) updateDayNight();
 },60000);
 
-/* =====================================
-   HIỂN THỊ KHU VƯỜN VÀ HÀNH TRÌNH
-===================================== */
+/* =================================
+   HIỂN THỊ HÀNH TRÌNH
+================================= */
 
 function render(){
 
@@ -862,7 +929,8 @@ function render(){
 
   document.getElementById('levelNote').textContent=note;
 
-  document.getElementById('todayTask').textContent=tasks[selectedTask][0];
+  document.getElementById('todayTask').textContent=
+    tasks[selectedTask][0];
 
   document.getElementById('completeToday').disabled=
     lastDate===today();
@@ -882,9 +950,9 @@ function render(){
   renderJournal();
 }
 
-/* =====================================
+/* =================================
    GHI NHẬN VIỆC TỬ TẾ
-===================================== */
+================================= */
 
 function completeTask(){
 
@@ -914,9 +982,9 @@ function completeTask(){
   render();
 }
 
-/* =====================================
-   DANH SÁCH NHIỆM VỤ
-===================================== */
+/* =================================
+   NHIỆM VỤ
+================================= */
 
 function renderTasks(){
 
@@ -933,7 +1001,9 @@ function renderTasks(){
     `).join('');
 
   document.querySelectorAll('input[name="task"]').forEach(el=>{
+
     el.addEventListener('change',()=>{
+
       selectedTask=Number(el.value);
 
       localStorage.setItem(
@@ -946,9 +1016,9 @@ function renderTasks(){
   });
 }
 
-/* =====================================
+/* =================================
    HUY HIỆU
-===================================== */
+================================= */
 
 function renderBadges(){
 
@@ -972,9 +1042,9 @@ function renderBadges(){
     `).join('');
 }
 
-/* =====================================
+/* =================================
    NHẬT KÝ
-===================================== */
+================================= */
 
 function escapeHtml(s){
 
@@ -999,12 +1069,9 @@ function renderJournal(){
     '<p class="muted">Chưa có ghi chép nào. Hãy lưu điều tốt đẹp đầu tiên.</p>';
 }
 
-/* =====================================
-   CÁC NÚT CHỨC NĂNG
-===================================== */
-
-document.getElementById('completeToday')
-  .addEventListener('click',completeTask);
+/* =================================
+   CỘNG ĐỒNG
+================================= */
 
 document.getElementById('contribute')
   .addEventListener('click',()=>{
@@ -1028,6 +1095,10 @@ document.getElementById('contribute')
     render();
   });
 
+/* =================================
+   LƯU NHẬT KÝ
+================================= */
+
 document.getElementById('saveJournal')
   .addEventListener('click',()=>{
 
@@ -1050,9 +1121,9 @@ document.getElementById('saveJournal')
     renderJournal();
   });
 
-/* =====================================
+/* =================================
    LỜI NHẮC TĨNH TÂM
-===================================== */
+================================= */
 
 const quotes=[
   'Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.',
@@ -1069,9 +1140,9 @@ document.getElementById('newQuote')
       quotes[Math.floor(Math.random()*quotes.length)];
   });
 
-/* =====================================
+/* =================================
    CHUYỂN CÁC KHU VỰC
-===================================== */
+================================= */
 
 document.querySelectorAll('nav button').forEach(b=>{
 
@@ -1090,7 +1161,7 @@ document.querySelectorAll('nav button').forEach(b=>{
   });
 });
 
-/* KHỞI ĐỘNG WEBSITE */
+/* KHỞI ĐỘNG */
 render();
 
 </script>
