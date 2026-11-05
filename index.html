@@ -5,279 +5,423 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#123b35">
-<title>Khu Vườn Nhân Duyên</title>
+<title>Khu Vườn Nhân Duyên – Thế giới thần tiên</title>
 
 <style>
 :root{
-  --deep:#123b35;
-  --green:#477b57;
-  --gold:#e9ce86;
+  --deep:#103a35;
+  --green:#477b55;
+  --gold:#e8cb83;
   --cream:#fff9e9;
   --ink:#294b3d;
-  --muted:#6b806f;
+  --muted:#71816d;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  background:linear-gradient(180deg,#102f32,#19483d);
-  font-family:Georgia,serif;
   color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  background:linear-gradient(180deg,#102f32,#194b40);
 }
+button{font-family:inherit}
 header{
-  padding:22px 16px;
   text-align:center;
-  color:#fff7df;
-  background:linear-gradient(130deg,#153c35,#35684b);
+  padding:22px 12px 18px;
+  color:#fff5d8;
+  background:linear-gradient(130deg,#153b34,#39734f);
   border-bottom:2px solid var(--gold);
 }
-.logo{font-size:38px}
-h1{
-  margin:5px 0;
-  color:var(--gold);
+.logo{
+  font-size:39px;
+  filter:drop-shadow(0 0 10px #f4d88d);
+}
+header h1{
+  margin:4px 0;
+  color:#f1d995;
   font-size:clamp(25px,5vw,38px);
 }
-header p{margin:7px 0 0;color:#f4e9c8}
+header p{margin:7px 0 0;font-size:15px}
 nav{
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:50;
   display:flex;
-  gap:7px;
-  justify-content:center;
   flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
   padding:10px;
-  background:#102f32ef;
+  background:#103530ed;
+  backdrop-filter:blur(10px);
 }
 nav button{
-  padding:10px 13px;
-  border:1px solid #b9c99a;
-  background:#f8f2df;
+  border:1px solid #d5c58e;
+  border-radius:25px;
+  background:#fff8e6;
   color:#315b43;
-  border-radius:22px;
+  padding:10px 13px;
   font-size:14px;
   cursor:pointer;
 }
 nav button.active{
-  background:#e9ce86;
-  color:#243f32;
+  background:#e9cf88;
+  color:#263f31;
   font-weight:bold;
 }
-main{max-width:1050px;margin:auto;padding:16px}
+main{max-width:1080px;margin:auto;padding:15px}
 .panel{display:none}
 .panel.active{display:block}
-
-/* KHUNG KHU VƯỜN */
-.scene{
-  height:410px;
-  position:relative;
-  overflow:hidden;
-  border:2px solid #d6bd77;
-  border-radius:24px;
+.card{
+  margin-top:16px;
+  padding:20px;
+  border-radius:20px;
+  background:var(--cream);
+  box-shadow:0 8px 25px #061d1940;
+}
+.card h2{
+  margin:0 0 14px;
+  color:#477b55;
+  font-size:24px;
+}
+.muted{color:var(--muted)}
+.notice{
+  font-size:13px;
+  color:#72816e;
+  line-height:1.6;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
   text-align:center;
+}
+.stat{
+  padding:13px 5px;
+  border-radius:14px;
+  background:#edf1df;
+}
+.stat strong{
+  display:block;
+  color:#4d8658;
+  font-size:28px;
+}
+.stage{
+  margin-top:14px;
+  text-align:center;
+  color:#98733b;
+  font-size:21px;
+  font-weight:bold;
+}
+.progress{
+  height:12px;
+  margin-top:8px;
+  overflow:hidden;
+  border-radius:20px;
+  background:#dce5d2;
+}
+.progress div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#79a95e,#d6c36c);
+  transition:width .5s;
+}
+.level-note{
+  margin-top:12px;
+  padding:12px;
+  border-radius:13px;
+  background:#f2ead0;
+}
+button.action{
+  margin:6px 5px 0 0;
+  padding:12px 18px;
+  border:0;
+  border-radius:24px;
+  background:#54875d;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
+button.action:disabled{
+  background:#9aa996;
+  cursor:not-allowed;
+}
+
+/* KHU VƯỜN THẦN TIÊN */
+.scene{
+  --sky1:#172747;
+  --sky2:#506c7a;
+  --sky3:#9aab83;
+  position:relative;
+  height:475px;
+  overflow:hidden;
+  border:2px solid #d8bd78;
+  border-radius:25px;
   background:linear-gradient(
-    #172747 0%,
-    #526f79 48%,
-    #9caf83 75%,
-    #315b43 100%
+    to bottom,
+    var(--sky1) 0%,
+    var(--sky2) 48%,
+    var(--sky3) 77%,
+    #47795b 100%
   );
-  box-shadow:0 12px 35px #061b19aa;
-  transition:background 2s;
+  box-shadow:0 13px 35px #061b19aa;
+  transition:background 1.5s;
+  isolation:isolate;
 }
 .scene.day{
+  --sky1:#73b9df;
+  --sky2:#b8dfd0;
+  --sky3:#e0e8ad;
   background:linear-gradient(
-    #72b9df 0%,
-    #b7dfd0 48%,
-    #d9e6a9 75%,
-    #4e9160 100%
+    to bottom,
+    var(--sky1) 0%,
+    var(--sky2) 48%,
+    var(--sky3) 77%,
+    #579260 100%
   );
 }
 .scene.night{
-  background:linear-gradient(
-    #172747 0%,
-    #354d69 48%,
-    #617c70 75%,
-    #244d43 100%
-  );
+  --sky1:#172747;
+  --sky2:#405a72;
+  --sky3:#81917e;
 }
-.moon{
+.scene:after{
+  content:"";
   position:absolute;
+  left:0;
+  right:0;
+  bottom:110px;
+  height:3px;
+  background:#e2d99e;
+  z-index:3;
+}
+.scene-control{
+  position:absolute;
+  right:12px;
+  top:12px;
+  z-index:20;
+  padding:8px 12px;
+  border:1px solid #fff0bd;
+  border-radius:22px;
+  background:#173b38dd;
+  color:#fff6d9;
+  cursor:pointer;
+  font-size:12px;
+}
+.welcome{
+  position:absolute;
+  top:17px;
+  left:0;
+  right:0;
+  z-index:8;
+  text-align:center;
+  color:#fff8df;
+  text-shadow:0 2px 8px #16372f;
+}
+.welcome h2{
+  margin:0 0 8px;
+  color:#fff0b6;
+  font-size:25px;
+}
+.welcome p{margin:0;font-size:14px}
+.sunmoon{
+  position:absolute;
+  top:70px;
   right:13%;
-  top:35px;
-  width:64px;
-  height:64px;
+  width:58px;
+  height:58px;
   border-radius:50%;
-  background:#fff0bd;
-  box-shadow:0 0 35px #fff0bd;
-  animation:moonGlow 4s infinite alternate;
+  background:#fff0b8;
+  box-shadow:0 0 32px 9px #fff0a8;
+  z-index:1;
+  transition:all 1.5s;
 }
-@keyframes moonGlow{
-  to{box-shadow:0 0 60px 12px #fff0bd}
-}
-.scene.day .moon{
-  background:#ffe58b;
-  box-shadow:0 0 45px #fff2a8;
-  width:68px;
-  height:68px;
+.scene.day .sunmoon{
+  background:#ffe58a;
+  box-shadow:0 0 45px 13px #fff2a8;
 }
 .stars{
   position:absolute;
   inset:0;
-  color:#fff1b9;
-  letter-spacing:20px;
-  line-height:45px;
-  opacity:.8;
+  z-index:1;
+  color:#fff0b6;
+  font-size:18px;
+  letter-spacing:22px;
+  line-height:53px;
+  opacity:.9;
   transition:opacity 1s;
 }
 .scene.day .stars{opacity:.08}
+.cloud{
+  position:absolute;
+  top:105px;
+  left:13%;
+  z-index:1;
+  font-size:35px;
+  opacity:.45;
+  animation:cloudMove 24s linear infinite alternate;
+}
+.cloud.two{
+  top:165px;
+  left:58%;
+  animation-duration:32s;
+}
+@keyframes cloudMove{
+  from{transform:translateX(-10px)}
+  to{transform:translateX(70px)}
+}
 .mountains{
   position:absolute;
-  bottom:112px;
-  width:100%;
-  font-size:70px;
-  opacity:.75;
+  left:0;
+  right:0;
+  bottom:125px;
+  z-index:2;
+  text-align:center;
+  font-size:66px;
+  opacity:.8;
 }
 .temple{
   position:absolute;
-  bottom:112px;
-  left:9%;
-  font-size:58px;
-  filter:drop-shadow(0 0 8px #ffe5a0);
-}
-.welcome{
-  position:relative;
+  left:8%;
+  bottom:122px;
   z-index:5;
-  padding:23px 10px;
-  color:#fff8df;
-  text-shadow:0 2px 8px #173b35;
+  font-size:53px;
+  filter:drop-shadow(0 0 8px #ffe6a3);
 }
-.welcome h2{color:#fff0b6;margin:0 0 8px}
 .tree{
   position:absolute;
-  bottom:83px;
-  right:13%;
-  font-size:90px;
-  z-index:4;
-  filter:drop-shadow(0 0 13px #dff3a5);
-  transition:transform .7s,filter .7s;
+  right:12%;
+  bottom:105px;
+  z-index:7;
+  font-size:92px;
   transform-origin:bottom center;
+  filter:drop-shadow(0 0 12px #dff3a5);
+  transition:transform .8s,filter .8s;
 }
-.tree.glow{animation:treeGlow 2s infinite alternate}
-@keyframes treeGlow{
-  to{
-    filter:drop-shadow(0 0 28px #ffe69a);
-    transform:scale(1.08);
-  }
+.tree.growing{animation:treeGrow 4s ease-in-out infinite}
+@keyframes treeGrow{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.055)}
 }
-.tree.bloom{filter:drop-shadow(0 0 18px #ffb8d2)}
+.tree.glowing{
+  filter:drop-shadow(0 0 23px #ffe69a);
+}
+.tree-flowers{
+  position:absolute;
+  right:9%;
+  bottom:190px;
+  z-index:9;
+  font-size:23px;
+  letter-spacing:4px;
+  animation:flowerSway 3s infinite ease-in-out;
+}
+@keyframes flowerSway{
+  0%,100%{transform:rotate(-5deg)}
+  50%{transform:rotate(5deg)}
+}
 
-/* CÀNH CÂY CHO CHIM ĐẬU */
+/* CÀNH CÂY VÀ CHIM */
 .branch{
   position:absolute;
-  z-index:3;
-  right:12%;
-  bottom:177px;
+  right:9%;
+  bottom:205px;
+  z-index:6;
   width:150px;
   height:8px;
-  background:linear-gradient(#80502e,#4b321e);
   border-radius:50%;
+  background:linear-gradient(#9a6738,#55371f);
   transform:rotate(-7deg);
   box-shadow:0 3px 5px #172b1c66;
 }
-.branch:before{
+.branch:before,.branch:after{
   content:"";
   position:absolute;
-  left:30px;
-  top:-23px;
   width:5px;
-  height:28px;
   background:#80502e;
   border-radius:5px;
+}
+.branch:before{
+  height:29px;
+  left:35px;
+  top:-23px;
   transform:rotate(-35deg);
 }
 .branch:after{
-  content:"";
-  position:absolute;
-  right:24px;
-  top:-18px;
-  width:5px;
-  height:22px;
-  background:#80502e;
-  border-radius:5px;
-  transform:rotate(32deg);
+  height:24px;
+  right:27px;
+  top:-19px;
+  transform:rotate(35deg);
 }
-.bird-perch{
+.bird{
   position:absolute;
-  z-index:6;
-  right:22%;
-  bottom:182px;
-  font-size:28px;
-  animation:birdBob 3s ease-in-out infinite;
+  z-index:10;
+  font-size:26px;
+  right:19%;
+  bottom:208px;
+  animation:birdMove 3s ease-in-out infinite;
   filter:drop-shadow(0 2px 3px #203d28);
 }
-.bird-perch.second{
-  right:30%;
-  bottom:174px;
-  font-size:22px;
-  animation-delay:1s;
+.bird.two{
+  right:27%;
+  bottom:199px;
+  font-size:21px;
+  animation-delay:1.2s;
 }
-@keyframes birdBob{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
+@keyframes birdMove{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-5px) rotate(3deg)}
 }
 
-/* HOA NỞ */
+/* HOA */
 .flower{
   position:absolute;
-  z-index:4;
+  z-index:6;
   font-size:25px;
-  animation:flowerSway 3s ease-in-out infinite;
   transform-origin:bottom center;
+  animation:flowerSway 3s ease-in-out infinite;
 }
-.flower.one{left:27%;bottom:105px}
-.flower.two{left:38%;bottom:112px;animation-delay:1s}
-.flower.three{left:52%;bottom:103px;animation-delay:1.5s}
-.flower.four{right:27%;bottom:108px;animation-delay:.7s}
-@keyframes flowerSway{
-  0%,100%{transform:rotate(-7deg)}
-  50%{transform:rotate(7deg) translateY(-4px)}
-}
-.flower-petal{
+.flower.f1{left:25%;bottom:118px}
+.flower.f2{left:38%;bottom:122px;animation-delay:.8s}
+.flower.f3{left:52%;bottom:115px;animation-delay:1.5s}
+.flower.f4{right:28%;bottom:118px;animation-delay:1s}
+.petal{
   position:absolute;
+  z-index:9;
   font-size:20px;
-  z-index:4;
-  animation:petalFloat 7s ease-in-out infinite;
+  animation:petalFloat 8s infinite ease-in-out;
 }
-.petal-one{left:23%;top:48%}
-.petal-two{left:48%;top:53%;animation-delay:2s}
-.petal-three{right:22%;top:44%;animation-delay:4s}
+.petal.p1{left:24%;top:43%}
+.petal.p2{left:48%;top:52%;animation-delay:2s}
+.petal.p3{right:20%;top:42%;animation-delay:4s}
+.petal.p4{left:65%;top:35%;animation-delay:1s}
 @keyframes petalFloat{
-  0%,100%{transform:translate(0,0) rotate(0deg);opacity:.9}
-  50%{transform:translate(25px,-35px) rotate(90deg);opacity:.5}
+  0%,100%{transform:translate(0,0) rotate(0);opacity:.9}
+  50%{transform:translate(25px,-38px) rotate(90deg);opacity:.5}
 }
 
-/* BƯỚM BAY */
+/* BƯỚM */
 .butterfly{
   position:absolute;
-  z-index:6;
+  z-index:10;
   font-size:27px;
   user-select:none;
 }
-.b1{
-  left:12%;
-  top:57%;
+.butterfly.b1{
+  left:12%;top:55%;
   animation:butterflyFly 9s infinite ease-in-out;
 }
-.b2{
-  left:40%;
-  top:43%;
+.butterfly.b2{
+  left:41%;top:43%;
   animation:butterflyFly 11s infinite ease-in-out;
   animation-delay:2s;
 }
-.b3{
-  right:20%;
-  top:53%;
+.butterfly.b3{
+  right:21%;top:53%;
   animation:butterflyFly 8s infinite ease-in-out;
   animation-delay:4s;
+}
+.butterfly.b4{
+  left:65%;top:58%;
+  animation:butterflyFly 12s infinite ease-in-out;
+  animation-delay:3s;
 }
 @keyframes butterflyFly{
   0%,100%{transform:translate(0,0) rotate(-10deg)}
@@ -286,55 +430,117 @@ main{max-width:1050px;margin:auto;padding:16px}
   75%{transform:translate(20px,30px) rotate(12deg)}
 }
 
+/* ĐOM ĐÓM */
+.firefly{
+  position:absolute;
+  z-index:10;
+  color:#fff5a2;
+  font-size:19px;
+  text-shadow:0 0 13px #fff4a0;
+  animation:fireflyFloat 5s infinite ease-in-out;
+}
+.firefly.f1{left:18%;top:42%}
+.firefly.f2{left:57%;top:30%;animation-delay:1s}
+.firefly.f3{right:18%;top:48%;animation-delay:2s}
+.firefly.f4{left:75%;top:35%;animation-delay:3s}
+@keyframes fireflyFloat{
+  0%,100%{transform:translate(0,0);opacity:1}
+  50%{transform:translate(15px,-25px);opacity:.25}
+}
+.scene.day .firefly{opacity:.12}
+
+/* CẦU GỖ */
+.bridge{
+  position:absolute;
+  z-index:5;
+  bottom:94px;
+  left:34%;
+  width:34%;
+  height:30px;
+  border-top:8px solid #98613b;
+  border-radius:50% 50% 0 0;
+  border-bottom:4px solid #70462c;
+  transform:perspective(80px) rotateX(12deg);
+}
+.bridge:before,.bridge:after{
+  content:"";
+  position:absolute;
+  top:-22px;
+  height:18px;
+  width:5px;
+  background:#82512f;
+}
+.bridge:before{left:8%}
+.bridge:after{right:8%}
+.bridge-rail{
+  position:absolute;
+  z-index:6;
+  left:36%;
+  bottom:118px;
+  width:30%;
+  border-top:3px solid #a97848;
+  transform:rotate(-1deg);
+}
+
+/* ĐÈN LỒNG */
+.lantern{
+  position:absolute;
+  z-index:7;
+  bottom:115px;
+  font-size:27px;
+  filter:drop-shadow(0 0 8px #ffdf86);
+}
+.lantern.l1{left:19%}
+.lantern.l2{right:28%}
+
 /* HỒ SEN */
 .pond{
   position:absolute;
   bottom:0;
-  height:105px;
+  left:0;
   width:100%;
-  background:linear-gradient(#76aaa0,#326b62);
-  border-top:3px solid #d1dda9;
-  z-index:2;
+  height:112px;
+  z-index:4;
   overflow:hidden;
+  background:linear-gradient(#7eb7a9,#39766a);
+  border-top:3px solid #d5dfab;
 }
 .water-wave{
   position:absolute;
-  top:12px;
+  top:13px;
   left:-20%;
   width:140%;
-  height:35px;
-  border-top:2px solid #d8f4df88;
+  height:32px;
+  border-top:2px solid #e0f5e2aa;
   border-radius:50%;
   animation:wave 6s linear infinite;
 }
 .water-wave.two{
-  top:32px;
+  top:37px;
   animation-delay:2s;
-  opacity:.6;
+  opacity:.65;
 }
 @keyframes wave{
-  0%{transform:translateX(-5%)}
+  0%,100%{transform:translateX(-5%)}
   50%{transform:translateX(5%)}
-  100%{transform:translateX(-5%)}
 }
 .lotus{
   position:relative;
-  z-index:3;
+  z-index:6;
+  text-align:center;
   padding-top:12px;
-  font-size:31px;
-  letter-spacing:12px;
+  font-size:29px;
+  letter-spacing:13px;
   animation:lotusFloat 4s ease-in-out infinite;
 }
 @keyframes lotusFloat{
   50%{transform:translateY(-5px)}
 }
-
-/* LÁ SEN VẼ BẰNG CSS, KHÔNG DÙNG KÝ TỰ LỖI */
 .lily-leaf{
   position:absolute;
   bottom:8px;
-  width:30px;
-  height:15px;
+  width:31px;
+  height:16px;
   background:linear-gradient(135deg,#9acb69,#3f874f);
   border:2px solid #275c40;
   border-radius:100% 0 100% 0;
@@ -350,151 +556,72 @@ main{max-width:1050px;margin:auto;padding:16px}
   background:#d6e9a1;
   transform:rotate(35deg);
 }
-.leaf-one{left:10%}
-.leaf-two{left:31%;bottom:18px}
-.leaf-three{left:67%}
-.leaf-four{right:8%;bottom:19px}
+.leaf1{left:10%}
+.leaf2{left:31%;bottom:18px}
+.leaf3{left:67%}
+.leaf4{right:8%;bottom:19px}
 .garden-caption{
   position:absolute;
-  bottom:112px;
+  z-index:12;
   left:0;
   right:0;
+  bottom:115px;
+  text-align:center;
   color:#fff8df;
   font-size:13px;
-  z-index:7;
   text-shadow:0 1px 5px #183d32;
+  pointer-events:none;
 }
-
-/* ĐOM ĐÓM */
-.firefly{
+.scene-label{
   position:absolute;
-  z-index:5;
-  color:#fff7a8;
-  text-shadow:0 0 12px #fff4a0;
-  animation:fireflyFloat 5s infinite ease-in-out;
-}
-.f1{left:18%;top:42%}
-.f2{left:57%;top:30%;animation-delay:1s}
-.f3{right:18%;top:48%;animation-delay:2s}
-@keyframes fireflyFloat{
-  50%{transform:translate(15px,-25px);opacity:.35}
-}
-
-/* NÚT CHUYỂN NGÀY ĐÊM */
-.scene-control{
-  position:absolute;
-  z-index:9;
-  right:12px;
-  top:12px;
-  border:1px solid #fff0bd;
-  border-radius:20px;
-  padding:7px 11px;
-  background:#183e38bb;
-  color:#fff8df;
+  z-index:15;
+  left:12px;
+  bottom:12px;
+  color:#fff4d5;
   font-size:12px;
-  cursor:pointer;
+  text-shadow:0 1px 5px #153c35;
 }
 
-/* CÁC THẺ THÔNG TIN */
-.card{
-  margin-top:16px;
-  padding:20px;
-  background:var(--cream);
-  border-radius:20px;
-  box-shadow:0 7px 22px #061b1944;
-}
-.card h2{
-  margin:0 0 14px;
-  color:var(--green);
-  font-size:24px;
-}
-.muted{color:var(--muted)}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  text-align:center;
-}
-.stat{
-  background:#edf1df;
-  padding:13px 5px;
-  border-radius:14px;
-}
-.stat strong{
-  display:block;
-  color:#4d8658;
-  font-size:28px;
-}
-.stage{
-  text-align:center;
-  color:#98733b;
-  font-weight:bold;
-  font-size:21px;
-  margin-top:14px;
-}
-.progress{
-  height:12px;
-  background:#dce5d2;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:8px;
-}
-.progress div{
-  height:100%;
-  width:0;
-  background:#78a85e;
-  transition:width .4s;
-}
-button.action{
-  border:0;
-  border-radius:24px;
-  padding:12px 18px;
-  background:#54875d;
-  color:white;
-  font-size:15px;
-  margin:7px 5px 0 0;
-  cursor:pointer;
-}
-button.action:disabled{background:#9aa996}
+/* CÁC KHU VỰC KHÁC */
 .task{
   display:flex;
   gap:12px;
   align-items:flex-start;
-  background:#edf1df;
+  margin:10px 0;
   padding:13px;
   border-radius:14px;
-  margin:10px 0;
+  background:#edf1df;
 }
 .task input{
   width:20px;
   height:20px;
-  accent-color:#54875d;
   margin-top:4px;
+  accent-color:#54875d;
 }
 .task strong{display:block}
-.task small{color:#6b806f}
+.task small{color:#71816d}
 .badges{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 .badgebox{
-  text-align:center;
-  background:#edf1df;
-  border-radius:14px;
   padding:13px 5px;
+  text-align:center;
+  border-radius:14px;
+  background:#edf1df;
 }
-.badgebox span{font-size:30px;display:block}
+.badgebox span{display:block;font-size:30px}
 .locked{opacity:.42;filter:grayscale(1)}
 textarea{
   width:100%;
+  min-height:95px;
   padding:12px;
   border:1px solid #bdcbb4;
   border-radius:12px;
-  font:inherit;
   background:#fffdf6;
   color:var(--ink);
-  min-height:85px;
+  font:inherit;
   resize:vertical;
 }
 .entry{
@@ -502,40 +629,30 @@ textarea{
   border-bottom:1px solid #dce5d2;
 }
 .quote{
-  text-align:center;
   padding:22px;
-  background:#edf1df;
   border-radius:15px;
+  background:#edf1df;
+  text-align:center;
   font-size:19px;
-  line-height:1.5;
+  line-height:1.6;
 }
 footer{
+  padding:24px 12px;
   text-align:center;
   color:#e8dfbf;
-  padding:24px 12px;
 }
-.notice{
-  font-size:13px;
-  color:#6b806f;
-  line-height:1.5;
-}
-.level-note{
-  background:#f2ead0;
-  border-radius:13px;
-  padding:12px;
-  margin-top:12px;
-}
-
-@media(max-width:560px){
-  main{padding:11px}
-  .scene{height:370px}
-  .stats{gap:6px}
-  .stat strong{font-size:24px}
+@media(max-width:600px){
+  main{padding:10px}
+  .scene{height:430px}
+  .stats{gap:5px}
+  .stat strong{font-size:23px}
   .card{padding:16px}
   .badges{grid-template-columns:repeat(2,1fr)}
-  nav button{font-size:13px;padding:9px 11px}
-  .branch{right:10%;width:120px}
-  .bird-perch{right:21%}
+  nav button{font-size:12px;padding:9px 10px}
+  .branch{right:7%;width:120px}
+  .bird{right:17%}
+  .tree{right:9%;font-size:80px}
+  .bridge{left:31%;width:38%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
@@ -565,12 +682,18 @@ footer{
 
 <main>
 
+<!-- KHU VƯỜN -->
 <section id="garden" class="panel active">
 
   <div class="scene night" id="gardenScene">
 
-    <div class="stars">✦　✧　✦　✧　✦</div>
-    <div class="moon"></div>
+    <div class="stars">
+      ✦　✧　✦　✧　✦　✧　✦
+    </div>
+
+    <div class="sunmoon"></div>
+    <div class="cloud">☁️</div>
+    <div class="cloud two">☁️</div>
 
     <button class="scene-control" id="sceneToggle">
       ☀️ Chuyển ban ngày
@@ -584,36 +707,51 @@ footer{
     <div class="mountains">⛰️　🏔️　⛰️</div>
     <div class="temple">🛕</div>
 
-    <div class="tree" id="tree">🌱</div>
+    <!-- CÂY PHÁT TRIỂN -->
+    <div class="tree growing" id="tree">🌱</div>
+    <div class="tree-flowers" id="treeFlowers"></div>
 
     <!-- CÀNH CÂY VÀ CHIM -->
     <div class="branch"></div>
-    <span class="bird-perch">🐦</span>
-    <span class="bird-perch second">🐤</span>
+    <span class="bird">🐦</span>
+    <span class="bird two">🐤</span>
 
-    <!-- HOA TRONG VƯỜN -->
-    <div class="flower one">🌸</div>
-    <div class="flower two">🌼</div>
-    <div class="flower three">🌺</div>
-    <div class="flower four">🌷</div>
+    <!-- HOA -->
+    <div class="flower f1">🌸</div>
+    <div class="flower f2">🌼</div>
+    <div class="flower f3">🌺</div>
+    <div class="flower f4">🌷</div>
 
     <!-- CÁNH HOA BAY -->
-    <div class="flower-petal petal-one">🌸</div>
-    <div class="flower-petal petal-two">🌼</div>
-    <div class="flower-petal petal-three">🌺</div>
+    <div class="petal p1">🌸</div>
+    <div class="petal p2">🌼</div>
+    <div class="petal p3">🌺</div>
+    <div class="petal p4">🌸</div>
 
-    <!-- BƯỚM BAY -->
+    <!-- BƯỚM -->
     <span class="butterfly b1">🦋</span>
     <span class="butterfly b2">🦋</span>
     <span class="butterfly b3">🦋</span>
+    <span class="butterfly b4">🦋</span>
 
     <!-- ĐOM ĐÓM -->
     <span class="firefly f1">✦</span>
     <span class="firefly f2">✧</span>
     <span class="firefly f3">✦</span>
+    <span class="firefly f4">✧</span>
+
+    <!-- CẦU VÀ ĐÈN LỒNG -->
+    <div class="bridge"></div>
+    <div class="bridge-rail"></div>
+    <div class="lantern l1">🏮</div>
+    <div class="lantern l2">🏮</div>
 
     <div class="garden-caption" id="gardenCaption">
-      Khu vườn bình yên đang đón ánh trăng
+      Ánh trăng soi sáng khu vườn bình yên
+    </div>
+
+    <div class="scene-label" id="sceneLabel">
+      🌙 Khu vườn đêm
     </div>
 
     <!-- HỒ SEN -->
@@ -623,10 +761,10 @@ footer{
 
       <div class="lotus" id="lotus">🌸　🌸　🌸</div>
 
-      <div class="lily-leaf leaf-one"></div>
-      <div class="lily-leaf leaf-two"></div>
-      <div class="lily-leaf leaf-three"></div>
-      <div class="lily-leaf leaf-four"></div>
+      <div class="lily-leaf leaf1"></div>
+      <div class="lily-leaf leaf2"></div>
+      <div class="lily-leaf leaf3"></div>
+      <div class="lily-leaf leaf4"></div>
     </div>
 
   </div>
@@ -672,13 +810,14 @@ footer{
     </button>
 
     <p class="notice">
-      Mỗi ngày chỉ ghi nhận một lần để khuyến khích hành động chân thành,
-      không chạy theo điểm số.
+      Mỗi ngày chỉ ghi nhận một lần để khuyến khích
+      hành động chân thành, không chạy theo điểm số.
     </p>
   </div>
 
 </section>
 
+<!-- NHIỆM VỤ -->
 <section id="tasks" class="panel">
   <div class="card">
     <h2>💚 Những hạt giống tử tế</h2>
@@ -689,18 +828,20 @@ footer{
   </div>
 </section>
 
+<!-- CỘNG ĐỒNG -->
 <section id="community" class="panel">
   <div class="card">
     <h2>🤝 Khu vườn cộng đồng</h2>
 
     <div class="quote">
-      “Một người gieo một hạt. Nhiều người cùng gieo, thành rừng xanh.”
+      “Một người gieo một hạt. Nhiều người cùng gieo,
+      thành rừng xanh.”
     </div>
 
     <div class="stats" style="margin-top:14px">
       <div class="stat">
         <strong id="communitySeeds">0</strong>
-        Hạt đóng góp trên thiết bị này
+        Hạt đóng góp
       </div>
       <div class="stat">
         <strong id="communityFlowers">0</strong>
@@ -714,7 +855,7 @@ footer{
 
     <p>
       Đóng góp một hạt từ việc tử tế bạn đã hoàn thành
-      để làm khu vườn chung trên thiết bị này thêm xanh.
+      để khu vườn chung thêm xanh.
     </p>
 
     <button class="action" id="contribute">
@@ -725,12 +866,13 @@ footer{
 
     <p class="notice">
       Đây là bản thử nghiệm lưu trên trình duyệt hiện tại.
-      Muốn nhiều người ở các thiết bị khác nhau cùng nhìn thấy
-      một khu vườn chung, cần máy chủ và cơ sở dữ liệu trực tuyến.
+      Muốn nhiều người dùng ở các thiết bị khác nhau cùng
+      nhìn thấy khu vườn chung, cần máy chủ và cơ sở dữ liệu trực tuyến.
     </p>
   </div>
 </section>
 
+<!-- THÀNH TỰU -->
 <section id="achievements" class="panel">
   <div class="card">
     <h2>🏅 Thành tựu nhân duyên</h2>
@@ -741,19 +883,26 @@ footer{
   </div>
 </section>
 
+<!-- NHẬT KÝ -->
 <section id="journal" class="panel">
   <div class="card">
     <h2>📖 Nhật ký việc tốt</h2>
     <p class="muted">
       Ghi lại điều đẹp đẽ bạn đã làm hôm nay.
     </p>
+
     <textarea id="journalInput"
       placeholder="Hôm nay tôi đã..."></textarea>
-    <button class="action" id="saveJournal">Lưu nhật ký</button>
+
+    <button class="action" id="saveJournal">
+      Lưu nhật ký
+    </button>
+
     <div id="journalList"></div>
   </div>
 </section>
 
+<!-- TĨNH TÂM -->
 <section id="mindful" class="panel">
   <div class="card">
     <h2>🪷 Một phút tĩnh tâm</h2>
@@ -764,12 +913,14 @@ footer{
     </div>
 
     <p style="text-align:center">
-      <button class="action" id="newQuote">Một lời nhắc khác</button>
+      <button class="action" id="newQuote">
+        Một lời nhắc khác
+      </button>
     </p>
 
     <p class="notice">
-      Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng.
-      Không cần vội vàng trở thành ai khác.
+      Ngồi yên thoải mái. Hít vào chậm rãi,
+      thở ra nhẹ nhàng. Không cần vội vàng trở thành ai khác.
     </p>
   </div>
 </section>
@@ -777,82 +928,134 @@ footer{
 </main>
 
 <footer>
-  🌿 Gieo một điều tốt đẹp hôm nay, để ngày mai thế giới thêm xanh.
+  🌿 Gieo một điều tốt đẹp hôm nay,
+  để ngày mai thế giới thêm xanh.
 </footer>
 
 <script>
 
-/* =================================
-   ĐỌC DỮ LIỆU ĐANG CÓ
-   KHÔNG XÓA HOẶC ĐẶT LẠI DỮ LIỆU
-================================= */
+/* =====================================
+   1. ĐỌC DỮ LIỆU CŨ – KHÔNG XÓA DỮ LIỆU
+===================================== */
 
-const get=(k,d)=>{
+function readStored(key, fallback){
   try{
-    const v=localStorage.getItem(k);
-    return v===null?d:JSON.parse(v);
-  }catch(e){
-    return d;
+    const value=localStorage.getItem(key);
+    if(value===null) return fallback;
+    return JSON.parse(value);
+  }catch(error){
+    return fallback;
   }
-};
+}
 
 let days=Number(localStorage.getItem('gardenDays')||0);
 let seeds=Number(localStorage.getItem('gardenSeeds')||0);
 let lastDate=localStorage.getItem('gardenLastDate')||'';
 
-let community=Number(get('gardenCommunitySeeds',0));
-let journal=get('gardenJournal',[]);
-let completed=get('gardenTaskDates',[]);
-let selectedTask=Number(get('gardenSelectedTask',0));
+let community=Number(readStored('gardenCommunitySeeds',0))||0;
+
+let journal=readStored('gardenJournal',[]);
+if(!Array.isArray(journal)) journal=[];
+
+let completed=readStored('gardenTaskDates',[]);
+if(!Array.isArray(completed)) completed=[];
+
+let selectedTask=Number(readStored('gardenSelectedTask',0));
+if(!Number.isFinite(selectedTask)||selectedTask<0) selectedTask=0;
 
 const tasks=[
-  ['Gọi điện hỏi thăm cha mẹ','Một cuộc gọi nhỏ có thể mang niềm vui lớn.'],
-  ['Giúp đỡ một người đang cần','Một hành động nhỏ cũng có thể tạo khác biệt.'],
-  ['Nói lời cảm ơn chân thành','Trao đi sự trân trọng.'],
-  ['Nhặt một món rác đúng nơi quy định','Góp phần giữ môi trường xanh.'],
-  ['Chia sẻ kiến thức hữu ích','Điều tốt đẹp lớn lên khi được sẻ chia.'],
-  ['Dành thời gian lắng nghe người thân','Có mặt trọn vẹn cũng là món quà.']
+  ['Gọi điện hỏi thăm cha mẹ',
+   'Một cuộc gọi nhỏ có thể mang niềm vui lớn.'],
+  ['Giúp đỡ một người đang cần',
+   'Một hành động nhỏ cũng có thể tạo khác biệt.'],
+  ['Nói lời cảm ơn chân thành',
+   'Trao đi sự trân trọng.'],
+  ['Nhặt một món rác đúng nơi quy định',
+   'Góp phần giữ môi trường xanh.'],
+  ['Chia sẻ kiến thức hữu ích',
+   'Điều tốt đẹp lớn lên khi được sẻ chia.'],
+  ['Dành thời gian lắng nghe người thân',
+   'Có mặt trọn vẹn cũng là một món quà.']
 ];
 
-const today=()=>new Date().toDateString();
+function todayKey(){
+  return new Date().toDateString();
+}
 
-/* =================================
-   CẤP ĐỘ CÂY
-================================= */
+/* =====================================
+   2. CẤP ĐỘ CÂY VÀ SỰ PHÁT TRIỂN
+===================================== */
 
 function levelInfo(){
 
-  if(seeds>=20)
-    return [6,'🌳🌸','Cổ thụ nhân duyên',100,
-    'Cổ thụ đã nở hoa rực rỡ. Khu vườn tràn đầy sức sống!'];
+  if(seeds>=20){
+    return {
+      level:6,
+      emoji:'🌳',
+      name:'Cổ thụ nhân duyên',
+      progress:100,
+      note:'🌸 Cổ thụ đã nở hoa rực rỡ. Khu vườn tràn đầy sức sống!',
+      flowers:'🌸 🌺 🌼 🌸'
+    };
+  }
 
-  if(seeds>=10)
-    return [5,'🌳🌺','Cây nở hoa',
-    Math.min(100,(seeds-10)*10),
-    'Những bông hoa đầu tiên đã nở, bướm bắt đầu ghé thăm.'];
+  if(seeds>=10){
+    return {
+      level:5,
+      emoji:'🌳',
+      name:'Cây nở hoa',
+      progress:(seeds-10)*10,
+      note:'🌺 Những bông hoa đầu tiên đã nở. Bướm bắt đầu ghé thăm.',
+      flowers:'🌸 🌺 🌸'
+    };
+  }
 
-  if(seeds>=6)
-    return [4,'🌳','Cây trưởng thành',
-    Math.round((seeds-6)/4*100),
-    'Tán cây đã rộng hơn, chim nhỏ ghé qua mỗi ngày.'];
+  if(seeds>=6){
+    return {
+      level:4,
+      emoji:'🌳',
+      name:'Cây trưởng thành',
+      progress:((seeds-6)/4)*100,
+      note:'🐦 Tán cây đã rộng hơn, chim nhỏ ghé qua mỗi ngày.',
+      flowers:'🌸 🌼'
+    };
+  }
 
-  if(seeds>=3)
-    return [3,'🌿','Cây con',
-    Math.round((seeds-3)/3*100),
-    'Những chiếc lá non đang vươn mình đón nắng.'];
+  if(seeds>=3){
+    return {
+      level:3,
+      emoji:'🌿',
+      name:'Cây con',
+      progress:((seeds-3)/3)*100,
+      note:'🍃 Những chiếc lá non đang vươn mình đón nắng.',
+      flowers:'🌼'
+    };
+  }
 
-  if(seeds>=1)
-    return [2,'🌱','Mầm non',
-    Math.round(seeds/3*100),
-    'Mầm non đang lớn lên từng ngày.'];
+  if(seeds>=1){
+    return {
+      level:2,
+      emoji:'🌱',
+      name:'Mầm non',
+      progress:(seeds/3)*100,
+      note:'🌱 Mầm non đang lớn lên từng ngày.',
+      flowers:''
+    };
+  }
 
-  return [1,'🌰','Hạt giống',0,
-    'Hạt giống đang chờ một hành động tử tế đầu tiên.'];
+  return {
+    level:1,
+    emoji:'🌰',
+    name:'Hạt giống',
+    progress:0,
+    note:'🌰 Hạt giống đang chờ một hành động tử tế đầu tiên.',
+    flowers:''
+  };
 }
 
-/* =================================
-   NGÀY VÀ ĐÊM
-================================= */
+/* =====================================
+   3. NGÀY VÀ ĐÊM
+===================================== */
 
 let manualScene=null;
 
@@ -878,6 +1081,11 @@ function updateDayNight(){
     isDay
     ? 'Ánh nắng dịu dàng đang chăm sóc khu vườn'
     : 'Ánh trăng soi sáng khu vườn bình yên';
+
+  document.getElementById('sceneLabel').textContent=
+    isDay
+    ? '☀️ Khu vườn ban ngày'
+    : '🌙 Khu vườn ban đêm';
 }
 
 document.getElementById('sceneToggle')
@@ -898,26 +1106,49 @@ setInterval(()=>{
   if(manualScene===null) updateDayNight();
 },60000);
 
-/* =================================
-   HIỂN THỊ HÀNH TRÌNH
-================================= */
+/* =====================================
+   4. HIỂN THỊ CÂY VÀ HỒ SEN
+===================================== */
 
-function render(){
+function renderGarden(){
 
-  const[lv,emoji,name,pct,note]=levelInfo();
-
-  document.getElementById('days').textContent=days;
-  document.getElementById('seeds').textContent=seeds;
-  document.getElementById('level').textContent=lv;
+  const info=levelInfo();
 
   const tree=document.getElementById('tree');
 
-  tree.textContent=emoji;
-  tree.className='tree'+(lv>=5?' glow bloom':'');
+  tree.textContent=info.emoji;
+  tree.className='tree growing'+
+    (info.level>=4?' glowing':'');
 
-  document.getElementById('stage').textContent=emoji+' '+name;
+  document.getElementById('treeFlowers').textContent=
+    info.flowers;
 
-  document.getElementById('progressBar').style.width=pct+'%';
+  const lotus=info.level>=5
+    ? '🌸　🌺　🌸'
+    : info.level>=3
+      ? '🌸　🌸　🌸'
+      : '🌸　🌸';
+
+  document.getElementById('lotus').textContent=lotus;
+}
+
+/* =====================================
+   5. HIỂN THỊ HÀNH TRÌNH
+===================================== */
+
+function render(){
+
+  const info=levelInfo();
+
+  document.getElementById('days').textContent=days;
+  document.getElementById('seeds').textContent=seeds;
+  document.getElementById('level').textContent=info.level;
+
+  document.getElementById('stage').textContent=
+    info.emoji+' '+info.name;
+
+  document.getElementById('progressBar').style.width=
+    Math.max(0,Math.min(100,info.progress))+'%';
 
   const targets=[1,3,6,10,20];
   const target=targets.find(n=>seeds<n);
@@ -927,16 +1158,17 @@ function render(){
     ? `Còn ${target-seeds} hạt nữa để đạt cấp tiếp theo.`
     : 'Bạn đã vun trồng cổ thụ nhân duyên!';
 
-  document.getElementById('levelNote').textContent=note;
+  document.getElementById('levelNote').textContent=info.note;
 
   document.getElementById('todayTask').textContent=
     tasks[selectedTask][0];
 
-  document.getElementById('completeToday').disabled=
-    lastDate===today();
+  const doneToday=lastDate===todayKey();
+
+  document.getElementById('completeToday').disabled=doneToday;
 
   document.getElementById('completeToday').textContent=
-    lastDate===today()
+    doneToday
     ? 'Bạn đã gieo hạt hôm nay ❤️'
     : 'Tôi đã làm việc này 💚';
 
@@ -945,29 +1177,34 @@ function render(){
   document.getElementById('communityFlowers').textContent=
     Math.floor(community/5);
 
+  renderGarden();
   renderTasks();
   renderBadges();
   renderJournal();
 }
 
-/* =================================
-   GHI NHẬN VIỆC TỬ TẾ
-================================= */
+/* =====================================
+   6. GHI NHẬN VIỆC TỬ TẾ
+===================================== */
 
 function completeTask(){
 
-  if(lastDate===today()) return;
+  if(lastDate===todayKey()){
+    document.getElementById('message').textContent=
+      '🌸 Bạn đã gieo hạt hôm nay rồi. Hãy tiếp tục ngày mai nhé!';
+    return;
+  }
 
   seeds++;
   days++;
-  lastDate=today();
+  lastDate=todayKey();
 
-  localStorage.setItem('gardenDays',days);
-  localStorage.setItem('gardenSeeds',seeds);
+  localStorage.setItem('gardenDays',String(days));
+  localStorage.setItem('gardenSeeds',String(seeds));
   localStorage.setItem('gardenLastDate',lastDate);
 
   completed.push({
-    date:today(),
+    date:todayKey(),
     task:tasks[selectedTask][0]
   });
 
@@ -982,47 +1219,53 @@ function completeTask(){
   render();
 }
 
-/* =================================
-   NHIỆM VỤ
-================================= */
+document.getElementById('completeToday')
+  .addEventListener('click',completeTask);
+
+/* =====================================
+   7. DANH SÁCH NHIỆM VỤ
+===================================== */
 
 function renderTasks(){
 
   document.getElementById('taskList').innerHTML=
-    tasks.map((t,i)=>`
+    tasks.map((task,index)=>`
       <label class="task">
-        <input type="radio" name="task" value="${i}"
-          ${i===selectedTask?'checked':''}>
+        <input type="radio"
+          name="task"
+          value="${index}"
+          ${index===selectedTask?'checked':''}>
         <span>
-          <strong>${t[0]}</strong>
-          <small>${t[1]}</small>
+          <strong>${task[0]}</strong>
+          <small>${task[1]}</small>
         </span>
       </label>
     `).join('');
 
-  document.querySelectorAll('input[name="task"]').forEach(el=>{
+  document.querySelectorAll('input[name="task"]')
+    .forEach(input=>{
 
-    el.addEventListener('change',()=>{
+      input.addEventListener('change',()=>{
 
-      selectedTask=Number(el.value);
+        selectedTask=Number(input.value);
 
-      localStorage.setItem(
-        'gardenSelectedTask',
-        selectedTask
-      );
+        localStorage.setItem(
+          'gardenSelectedTask',
+          String(selectedTask)
+        );
 
-      render();
+        render();
+      });
     });
-  });
 }
 
-/* =================================
-   HUY HIỆU
-================================= */
+/* =====================================
+   8. HUY HIỆU
+===================================== */
 
 function renderBadges(){
 
-  const b=[
+  const badges=[
     ['🌱','Hạt giống đầu tiên',seeds>=1],
     ['🌿','Mầm xanh',seeds>=3],
     ['🌳','Cây trưởng thành',seeds>=6],
@@ -1034,44 +1277,77 @@ function renderBadges(){
   ];
 
   document.getElementById('badges').innerHTML=
-    b.map(x=>`
-      <div class="badgebox ${x[2]?'':'locked'}">
-        <span>${x[0]}</span>
-        ${x[1]}
+    badges.map(item=>`
+      <div class="badgebox ${item[2]?'':'locked'}">
+        <span>${item[0]}</span>
+        ${item[1]}
       </div>
     `).join('');
 }
 
-/* =================================
-   NHẬT KÝ
-================================= */
+/* =====================================
+   9. NHẬT KÝ
+===================================== */
 
-function escapeHtml(s){
+function escapeHTML(value){
 
-  return String(s).replace(/[&<>"']/g,c=>({
+  return String(value).replace(/[&<>"']/g,char=>({
     '&':'&amp;',
     '<':'&lt;',
     '>':'&gt;',
     '"':'&quot;',
     "'":'&#39;'
-  }[c]));
+  }[char]));
 }
 
 function renderJournal(){
 
   document.getElementById('journalList').innerHTML=
-    journal.slice().reverse().map(x=>`
-      <div class="entry">
-        <strong>${x.date}</strong>
-        <p>${escapeHtml(x.text)}</p>
-      </div>
-    `).join('') ||
+    journal.slice().reverse().map(item=>{
+
+      if(typeof item==='string'){
+        return `
+          <div class="entry">
+            ${escapeHTML(item)}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="entry">
+          <strong>${escapeHTML(item.date||'Nhật ký')}</strong>
+          <p>${escapeHTML(item.text||'')}</p>
+        </div>
+      `;
+    }).join('') ||
     '<p class="muted">Chưa có ghi chép nào. Hãy lưu điều tốt đẹp đầu tiên.</p>';
 }
 
-/* =================================
-   CỘNG ĐỒNG
-================================= */
+document.getElementById('saveJournal')
+  .addEventListener('click',()=>{
+
+    const input=document.getElementById('journalInput');
+    const text=input.value.trim();
+
+    if(!text) return;
+
+    journal.push({
+      date:new Date().toLocaleDateString('vi-VN'),
+      text:text
+    });
+
+    localStorage.setItem(
+      'gardenJournal',
+      JSON.stringify(journal)
+    );
+
+    input.value='';
+    renderJournal();
+  });
+
+/* =====================================
+   10. CỘNG ĐỒNG
+===================================== */
 
 document.getElementById('contribute')
   .addEventListener('click',()=>{
@@ -1090,78 +1366,61 @@ document.getElementById('contribute')
     );
 
     document.getElementById('communityMessage').textContent=
-      'Cảm ơn bạn đã góp một hạt lành cho khu vườn!';
+      '🌱 Cảm ơn bạn đã góp một hạt lành cho khu vườn!';
 
     render();
   });
 
-/* =================================
-   LƯU NHẬT KÝ
-================================= */
-
-document.getElementById('saveJournal')
-  .addEventListener('click',()=>{
-
-    const el=document.getElementById('journalInput');
-    const text=el.value.trim();
-
-    if(!text) return;
-
-    journal.push({
-      date:new Date().toLocaleDateString('vi-VN'),
-      text
-    });
-
-    localStorage.setItem(
-      'gardenJournal',
-      JSON.stringify(journal)
-    );
-
-    el.value='';
-    renderJournal();
-  });
-
-/* =================================
-   LỜI NHẮC TĨNH TÂM
-================================= */
+/* =====================================
+   11. TĨNH TÂM
+===================================== */
 
 const quotes=[
   'Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.',
   'Chậm lại một chút, ta sẽ thấy điều bình dị cũng rất đẹp.',
   'Một lời nói hiền lành có thể làm dịu một ngày khó khăn.',
   'Không cần làm việc lớn lao; hãy bắt đầu bằng một điều tử tế nhỏ.',
-  'Bình an bắt đầu từ sự chú tâm trong giây phút này.'
+  'Bình an bắt đầu từ sự chú tâm trong giây phút này.',
+  'Hãy để lòng mình nhẹ như một chiếc lá trôi trên mặt hồ.'
 ];
 
 document.getElementById('newQuote')
   .addEventListener('click',()=>{
 
+    const index=Math.floor(Math.random()*quotes.length);
+
     document.getElementById('quote').textContent=
-      quotes[Math.floor(Math.random()*quotes.length)];
+      quotes[index];
   });
 
-/* =================================
-   CHUYỂN CÁC KHU VỰC
-================================= */
+/* =====================================
+   12. CHUYỂN ĐỔI 6 KHU VỰC
+===================================== */
 
-document.querySelectorAll('nav button').forEach(b=>{
+document.querySelectorAll('nav button')
+  .forEach(button=>{
 
-  b.addEventListener('click',()=>{
+    button.addEventListener('click',()=>{
 
-    document.querySelectorAll('nav button')
-      .forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('nav button')
+        .forEach(item=>item.classList.remove('active'));
 
-    document.querySelectorAll('.panel')
-      .forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.panel')
+        .forEach(item=>item.classList.remove('active'));
 
-    b.classList.add('active');
+      button.classList.add('active');
 
-    document.getElementById(b.dataset.tab)
-      .classList.add('active');
+      document.getElementById(button.dataset.tab)
+        .classList.add('active');
+
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
   });
-});
 
-/* KHỞI ĐỘNG */
+/* =====================================
+   13. KHỞI ĐỘNG WEBSITE
+===================================== */
+
 render();
 
 </script>
