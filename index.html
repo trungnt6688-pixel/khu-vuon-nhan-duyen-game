@@ -7,98 +7,84 @@
 <meta name="theme-color" content="#123b35">
 <title>Khu Vườn Nhân Duyên</title>
 <style>
-:root{--deep:#103a35;--green:#477b55;--gold:#e8cb83;--cream:#fff9e9;--ink:#294b3d;--muted:#71816d}
+:root{--green:#477b55;--cream:#fff9e9;--ink:#294b3d}
 *{box-sizing:border-box;font-family:Arial,Tahoma,sans-serif}
-body{margin:0;color:var(--ink);background:linear-gradient(180deg,#102f32,#194b40);font-size:16px;line-height:1.55}
-button,textarea,input{font:inherit}button{cursor:pointer}
-header{text-align:center;padding:20px 12px 17px;color:#fff5d8;background:linear-gradient(130deg,#153b34,#39734f);border-bottom:2px solid var(--gold)}
-.logo{font-size:38px;filter:drop-shadow(0 0 10px #f4d88d)}
-header h1{margin:4px 0;color:#f1d995;font-size:clamp(24px,5vw,37px);letter-spacing:1px}
-header p{margin:7px 0 0;font-size:14px}
-nav{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:10px;background:#103530ed;backdrop-filter:blur(10px)}
-nav button{border:1px solid #d5c58e;border-radius:25px;background:#fff8e6;color:#315b43;padding:10px 13px;font-size:14px}
-nav button.active{background:#e9cf88;color:#263f31;font-weight:bold}
-main{max-width:1080px;margin:auto;padding:15px}
+body{margin:0;background:linear-gradient(#123b35,#285b45);color:var(--ink);line-height:1.55}
+button,textarea{font:inherit}
+button{cursor:pointer}
+header{text-align:center;padding:20px 10px;color:#fff3d4;background:linear-gradient(130deg,#153b34,#39734f);border-bottom:2px solid #e8cb83}
+.logo{font-size:38px}
+header h1{margin:4px;color:#f1d995;font-size:clamp(24px,5vw,36px)}
+header p{margin:5px}
+nav{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:10px;background:#103530ed}
+nav button{border:1px solid #d5c58e;border-radius:25px;background:#fff8e6;color:#315b43;padding:9px 12px;font-size:13px}
+nav button.active{background:#e9cf88;font-weight:bold}
+main{max-width:1050px;margin:auto;padding:14px}
 .panel{display:none}.panel.active{display:block}
-.card{margin-top:16px;padding:20px;border-radius:20px;background:var(--cream);box-shadow:0 8px 25px #061d1940}
-.card h2{margin:0 0 14px;color:#477b55;font-size:23px}
-.muted{color:var(--muted)}.notice{font-size:13px;color:#71816d;line-height:1.7}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;text-align:center}
-.stat{padding:13px 5px;border-radius:14px;background:#edf1df}
-.stat strong{display:block;color:#4d8658;font-size:27px}
-.stage{text-align:center;margin-top:14px;color:#98733b;font-size:21px;font-weight:bold}
-.progress{height:12px;margin-top:8px;overflow:hidden;border-radius:20px;background:#dce5d2}
-.progress div{height:100%;width:0;background:linear-gradient(90deg,#79a95e,#d6c36c);transition:width .5s}
-.level-note,.reward-box{margin-top:12px;padding:12px;border-radius:13px;background:#f2ead0}
-.action{margin:6px 5px 0 0;padding:11px 17px;border:0;border-radius:24px;background:#54875d;color:white;font-size:14px}
-.action:disabled{background:#9aa996;cursor:not-allowed}
+.card{margin-top:15px;padding:19px;border-radius:19px;background:var(--cream);box-shadow:0 8px 25px #061d1940}
+.card h2{margin:0 0 12px;color:#477b55}
+.muted,.notice{color:#71816d}.notice{font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stat{padding:12px 4px;border-radius:13px;background:#edf1df}
+.stat strong{display:block;color:#4d8658;font-size:26px}
+.stage{text-align:center;margin-top:12px;color:#98733b;font-size:21px;font-weight:bold}
+.progress{height:12px;margin-top:8px;border-radius:20px;background:#dce5d2;overflow:hidden}
+.progress div{height:100%;background:linear-gradient(90deg,#79a95e,#d6c36c);transition:width .5s}
+.action{margin:6px 5px 0 0;padding:11px 17px;border:0;border-radius:24px;background:#54875d;color:white}
 .secondary{background:#e9edda;color:#365b43;border:1px solid #b9c9a9}
-.quote{padding:22px;border-radius:15px;background:#edf1df;text-align:center;font-size:19px;line-height:1.7}
-.scene{position:relative;height:455px;overflow:hidden;border:2px solid #d8bd78;border-radius:25px;background:linear-gradient(to bottom,#172747,#506c7a 48%,#9aab83 77%,#47795b);box-shadow:0 13px 35px #061b19aa;isolation:isolate;transition:background 1.5s}
-.scene.day{background:linear-gradient(to bottom,#73b9df,#b8dfd0 48%,#e0e8ad 77%,#579260)}
-.scene:after{content:"";position:absolute;left:0;right:0;bottom:105px;height:3px;background:#e2d99e;z-index:3}
-.scene-control{position:absolute;right:12px;top:12px;z-index:20;padding:8px 12px;border:1px solid #fff0bd;border-radius:22px;background:#173b38dd;color:#fff6d9;font-size:12px}
-.welcome{position:absolute;top:16px;left:0;right:0;z-index:8;text-align:center;color:#fff8df;text-shadow:0 2px 8px #16372f}
-.welcome h2{margin:0 0 7px;color:#fff0b6;font-size:24px}.welcome p{margin:0;font-size:14px}
-.sunmoon{position:absolute;top:68px;right:13%;width:57px;height:57px;border-radius:50%;background:#fff0b8;box-shadow:0 0 32px 9px #fff0a8;z-index:1}
-.scene.day .sunmoon{background:#ffe58a;box-shadow:0 0 45px 13px #fff2a8}
-.stars{position:absolute;inset:0;z-index:1;color:#fff0b6;font-size:18px;letter-spacing:22px;line-height:53px}
-.scene.day .stars{opacity:.08}
-.cloud{position:absolute;top:105px;left:13%;z-index:1;font-size:34px;opacity:.45;animation:cloudMove 24s linear infinite alternate}
-.cloud.two{top:165px;left:58%;animation-duration:32s}
-@keyframes cloudMove{to{transform:translateX(70px)}}
-.mountains{position:absolute;left:0;right:0;bottom:122px;z-index:2;text-align:center;font-size:62px;opacity:.8}
-.temple{position:absolute;left:8%;bottom:119px;z-index:5;font-size:50px;filter:drop-shadow(0 0 8px #ffe6a3)}
-.tree{position:absolute;right:12%;bottom:101px;z-index:7;font-size:88px;filter:drop-shadow(0 0 12px #dff3a5);animation:treeGrow 4s ease-in-out infinite}
-@keyframes treeGrow{50%{transform:scale(1.055)}}
-.tree-flowers{position:absolute;right:8%;bottom:185px;z-index:9;font-size:22px;letter-spacing:3px}
-.branch{position:absolute;right:9%;bottom:200px;z-index:6;width:145px;height:8px;border-radius:50%;background:linear-gradient(#9a6738,#55371f);transform:rotate(-7deg)}
-.bird{position:absolute;z-index:10;font-size:25px;right:19%;bottom:204px;animation:birdMove 3s ease-in-out infinite}
-.bird.two{right:27%;bottom:197px;font-size:20px;animation-delay:1s}
-@keyframes birdMove{50%{transform:translateY(-5px) rotate(3deg)}}
-.flower{position:absolute;z-index:6;font-size:24px;animation:sway 3s ease-in-out infinite}
-.flower.f1{left:25%;bottom:115px}.flower.f2{left:38%;bottom:120px;animation-delay:.8s}
-.flower.f3{left:52%;bottom:113px;animation-delay:1.5s}.flower.f4{right:28%;bottom:115px}
-@keyframes sway{50%{transform:rotate(6deg)}}
+.complete{display:block;width:100%;padding:17px;border:2px solid #e8c56e;border-radius:16px;background:linear-gradient(120deg,#a77b2e,#e8cc80,#a77b2e);color:#273d2c;font-size:18px;font-weight:bold;box-shadow:0 5px 15px #8d6a3040}
+.complete:hover{filter:brightness(1.06)}
+.reward-box,.level-note{margin-top:12px;padding:12px;border-radius:13px;background:#f2ead0}
+.scene{position:relative;height:440px;overflow:hidden;border:2px solid #d8bd78;border-radius:24px;background:linear-gradient(#172747,#506c7a 48%,#9aab83 77%,#47795b);isolation:isolate;transition:background 1s}
+.scene.day{background:linear-gradient(#73b9df,#b8dfd0 48%,#e0e8ad 77%,#579260)}
+.scene-control{position:absolute;right:10px;top:10px;z-index:20;padding:8px 12px;border:0;border-radius:20px;background:#173b38dd;color:white}
+.welcome{position:absolute;top:15px;left:0;right:0;z-index:8;text-align:center;color:#fff8df;text-shadow:0 2px 8px #16372f}
+.welcome h2{margin:0;color:#fff0b6}
+.sunmoon{position:absolute;top:65px;right:14%;width:55px;height:55px;border-radius:50%;background:#fff0b8;box-shadow:0 0 32px 9px #fff0a8}
+.stars{position:absolute;inset:0;color:#fff0b6;font-size:18px;letter-spacing:20px;line-height:52px}
+.scene.day .stars{opacity:.1}
+.cloud{position:absolute;top:110px;left:15%;font-size:35px;opacity:.5;animation:cloud 24s infinite alternate}
+@keyframes cloud{to{transform:translateX(65px)}}
+.mountains{position:absolute;bottom:120px;left:0;right:0;text-align:center;font-size:60px}
+.temple{position:absolute;left:8%;bottom:117px;font-size:48px;z-index:5}
+.tree{position:absolute;right:10%;bottom:100px;z-index:7;font-size:100px;filter:drop-shadow(0 0 12px #dff3a5);animation:grow 4s infinite}
+@keyframes grow{50%{transform:scale(1.06)}}
+.tree-flowers{position:absolute;right:8%;bottom:190px;z-index:9;font-size:25px}
+.branch{position:absolute;right:8%;bottom:200px;width:145px;height:8px;border-radius:50%;background:#754b2c;transform:rotate(-7deg)}
+.bird{position:absolute;right:18%;bottom:205px;z-index:10;font-size:27px;animation:bird 3s infinite}
+.bird.two{right:27%;font-size:21px;animation-delay:1s}
+@keyframes bird{50%{transform:translateY(-6px)}}
+.flower{position:absolute;z-index:6;font-size:26px;animation:sway 3s infinite}
+.flower.a{left:25%;bottom:112px}.flower.b{left:38%;bottom:118px}.flower.c{left:52%;bottom:112px}.flower.d{right:28%;bottom:115px}
+@keyframes sway{50%{transform:rotate(7deg)}}
 .butterfly{position:absolute;z-index:10;font-size:26px;animation:fly 9s infinite ease-in-out}
-.b1{left:12%;top:55%}.b2{left:41%;top:43%;animation-delay:2s}.b3{right:21%;top:53%;animation-delay:4s}.b4{left:65%;top:58%;animation-delay:3s}
-@keyframes fly{0%,100%{transform:translate(0,0) rotate(-10deg)}25%{transform:translate(25px,-22px) rotate(12deg)}50%{transform:translate(55px,8px) rotate(-8deg)}75%{transform:translate(20px,30px) rotate(12deg)}}
-.firefly{position:absolute;z-index:10;color:#fff5a2;font-size:19px;text-shadow:0 0 13px #fff4a0;animation:glow 5s infinite ease-in-out}
-.firefly.f1{left:18%;top:42%}.firefly.f2{left:57%;top:30%;animation-delay:1s}.firefly.f3{right:18%;top:48%;animation-delay:2s}.firefly.f4{left:75%;top:35%;animation-delay:3s}
-@keyframes glow{50%{transform:translate(15px,-25px);opacity:.25}}
-.scene.day .firefly{opacity:.12}
-.bridge{position:absolute;z-index:5;bottom:90px;left:34%;width:34%;height:30px;border-top:8px solid #98613b;border-radius:50% 50% 0 0;border-bottom:4px solid #70462c}
-.lantern{position:absolute;z-index:7;bottom:110px;font-size:26px;filter:drop-shadow(0 0 8px #ffdf86)}
-.lantern.l1{left:19%}.lantern.l2{right:28%}
-.caption{position:absolute;z-index:12;left:0;right:0;bottom:111px;text-align:center;color:#fff8df;font-size:12px;text-shadow:0 1px 5px #183d32}
-.scene-label{position:absolute;z-index:15;left:12px;bottom:10px;color:#fff4d5;font-size:12px}
-.pond{position:absolute;bottom:0;left:0;width:100%;height:108px;z-index:4;overflow:hidden;background:linear-gradient(#7eb7a9,#39766a);border-top:3px solid #d5dfab}
-.wave{position:absolute;top:13px;left:-20%;width:140%;height:32px;border-top:2px solid #e0f5e2aa;border-radius:50%;animation:wave 6s linear infinite}
-.wave.two{top:37px;animation-delay:2s}
-@keyframes wave{50%{transform:translateX(5%)}}
-.lotus{position:relative;z-index:6;text-align:center;padding-top:12px;font-size:28px;letter-spacing:13px;animation:lotusFloat 4s ease-in-out infinite}
-@keyframes lotusFloat{50%{transform:translateY(-5px)}}
-.leaf{position:absolute;bottom:8px;width:31px;height:16px;background:linear-gradient(135deg,#9acb69,#3f874f);border:2px solid #275c40;border-radius:100% 0 100% 0}
-.leaf.a{left:10%}.leaf.b{left:31%;bottom:18px}.leaf.c{left:67%}.leaf.d{right:8%;bottom:19px}
+.b1{left:12%;top:55%}.b2{left:41%;top:43%;animation-delay:2s}.b3{right:21%;top:53%;animation-delay:4s}
+@keyframes fly{0%,100%{transform:translate(0,0)}25%{transform:translate(25px,-22px)}50%{transform:translate(55px,8px)}75%{transform:translate(20px,30px)}}
+.firefly{position:absolute;color:#fff5a2;text-shadow:0 0 13px #fff4a0;animation:glow 5s infinite}
+.firefly.a{left:18%;top:42%}.firefly.b{left:57%;top:30%}.firefly.c{right:18%;top:48%}
+@keyframes glow{50%{transform:translate(15px,-25px);opacity:.2}}
+.scene.day .firefly{opacity:.1}
+.pond{position:absolute;bottom:0;width:100%;height:105px;background:linear-gradient(#7eb7a9,#39766a);border-top:3px solid #d5dfab;z-index:4;text-align:center}
+.lotus{padding-top:10px;font-size:34px;letter-spacing:12px;animation:float 4s infinite}
+@keyframes float{50%{transform:translateY(-5px)}}
+.wave{position:absolute;top:16px;left:0;width:100%;height:25px;border-top:2px solid #e0f5e2aa;border-radius:50%}
+.caption{position:absolute;bottom:110px;left:0;right:0;text-align:center;color:#fff8df;font-size:12px;z-index:12}
+.scene-label{position:absolute;bottom:10px;left:12px;color:#fff4d5;z-index:12;font-size:12px}
 .care-panel{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;padding:12px;background:#edf1df;border-radius:14px}
-.care-panel strong{color:#477b55}
-.mission{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:14px;border-radius:15px;background:#edf1df;border:1px solid transparent}
-.mission.done{background:#e4efdc;border-color:#8bb17d}
-.mission .symbol{font-size:27px}.mission .detail{flex:1}
-.mission strong{display:block;margin-bottom:4px}.mission small{display:block;color:#71816d;line-height:1.6}
-.mission button{white-space:nowrap}.reward{font-size:12px;color:#9a7839;margin-top:5px}
-.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.badgebox{padding:13px 5px;text-align:center;border-radius:14px;background:#edf1df}
-.badgebox span{display:block;font-size:30px;margin-bottom:5px}.locked{opacity:.42;filter:grayscale(1)}
-textarea{width:100%;min-height:95px;padding:12px;border:1px solid #bdcbb4;border-radius:12px;background:#fffdf6;color:var(--ink);resize:vertical}
-.entry{padding:12px;border-bottom:1px solid #dce5d2;line-height:1.7}
-.reward-box{padding:14px;border-radius:14px;background:#f2ead0;margin-top:12px}
-.unlock-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.unlock-item{padding:12px;border-radius:13px;background:#edf1df;text-align:center}
-.unlock-item span{display:block;font-size:28px}
-footer{padding:24px 12px;text-align:center;color:#e8dfbf}
-@media(max-width:600px){main{padding:10px}.scene{height:420px}.stats{gap:5px}.stat strong{font-size:23px}.card{padding:16px}.badges{grid-template-columns:repeat(2,1fr)}nav button{font-size:12px;padding:9px 10px}.tree{right:9%;font-size:78px}.branch{right:7%;width:120px}.bridge{left:31%;width:38%}.mission{flex-wrap:wrap}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+.mission{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:13px;border-radius:14px;background:#edf1df}
+.mission.done{background:#e4efdc}
+.mission .symbol{font-size:26px}.mission .detail{flex:1}
+.mission strong{display:block}.mission small{display:block;color:#71816d}
+.reward{font-size:12px;color:#98733b;margin-top:5px}
+.badges,.unlock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.badgebox,.unlock-item{padding:13px 5px;text-align:center;border-radius:13px;background:#edf1df}
+.badgebox span,.unlock-item span{display:block;font-size:29px}
+.locked{opacity:.4;filter:grayscale(1)}
+textarea{width:100%;min-height:95px;padding:12px;border:1px solid #bdcbb4;border-radius:12px;background:#fffdf6;color:var(--ink)}
+.entry{padding:12px;border-bottom:1px solid #dce5d2}
+.quote{padding:22px;border-radius:15px;background:#edf1df;text-align:center;font-size:19px}
+footer{text-align:center;padding:24px;color:#e8dfbf}
+@media(max-width:600px){.scene{height:410px}.card{padding:15px}.badges,.unlock-grid{grid-template-columns:repeat(2,1fr)}nav button{font-size:12px;padding:8px 10px}.tree{font-size:83px}}
 </style>
 </head>
 <body>
@@ -118,22 +104,22 @@ footer{padding:24px 12px;text-align:center;color:#e8dfbf}
 <main>
 <section id="garden" class="panel active">
 <div class="scene" id="scene">
-<div class="stars">✦　✧　✦　✧　✦　✧　✦</div>
-<div class="sunmoon"></div><div class="cloud">☁️</div><div class="cloud two">☁️</div>
+<div class="stars">✦　✧　✦　✧　✦　✧</div>
+<div class="sunmoon"></div><div class="cloud">☁️</div>
 <button class="scene-control" id="toggleDay">🌙 Chuyển ban đêm</button>
 <div class="welcome"><h2>Khu vườn của bạn</h2><p>Mỗi việc tốt là một hạt giống lành.</p></div>
 <div class="mountains" id="mountains">⛰️　🏔️　⛰️</div>
 <div class="temple">🛕</div><div class="tree" id="tree">🌱</div>
 <div class="tree-flowers" id="treeFlowers"></div><div class="branch"></div>
 <span class="bird">🐦</span><span class="bird two">🐤</span>
-<div class="flower f1">🌸</div><div class="flower f2">🌼</div><div class="flower f3">🌺</div><div class="flower f4">🌷</div>
-<span class="butterfly b1">🦋</span><span class="butterfly b2">🦋</span><span class="butterfly b3">🦋</span><span class="butterfly b4">🦋</span>
-<span class="firefly f1">✦</span><span class="firefly f2">✧</span><span class="firefly f3">✦</span><span class="firefly f4">✧</span>
-<div class="bridge"></div><div class="lantern l1">🏮</div><div class="lantern l2">🏮</div>
+<div class="flower a">🌸</div><div class="flower b">🌼</div><div class="flower c">🌺</div><div class="flower d">🌷</div>
+<span class="butterfly b1">🦋</span><span class="butterfly b2">🦋</span><span class="butterfly b3">🦋</span>
+<span class="firefly a">✦</span><span class="firefly b">✧</span><span class="firefly c">✦</span>
 <div class="caption" id="caption">Ánh trăng soi sáng khu vườn bình yên</div>
 <div class="scene-label" id="sceneLabel">🌙 Khu vườn đêm</div>
-<div class="pond"><div class="wave"></div><div class="wave two"></div><div class="lotus" id="lotus">🌸　🌸</div><div class="leaf a"></div><div class="leaf b"></div><div class="leaf c"></div><div class="leaf d"></div></div>
+<div class="pond"><div class="wave"></div><div class="lotus" id="lotus">🌸　🌸</div></div>
 </div>
+
 <div class="card">
 <h2>🌸 Hành trình của bạn</h2>
 <div class="stats">
@@ -146,36 +132,44 @@ footer{padding:24px 12px;text-align:center;color:#e8dfbf}
 <div class="progress"><div id="progress"></div></div>
 <div class="level-note" id="levelNote"></div>
 <div class="reward-box">
-<strong>✨ Điểm nhân duyên:</strong> <span id="karma">0</span>
-<br><strong>🔥 Chuỗi ngày gieo hạt:</strong> <span id="streak">0</span> ngày
-<br><strong>💧 Điểm chăm sóc:</strong> <span id="carePoints">0</span>
+<strong>✨ Điểm nhân duyên:</strong> <span id="karma">0</span><br>
+<strong>🔥 Chuỗi ngày gieo hạt:</strong> <span id="streak">0</span> ngày<br>
+<strong>💧 Điểm chăm sóc:</strong> <span id="carePoints">0</span>
 </div>
 <div class="care-panel">
-<div style="flex:1"><strong>🌿 Chăm sóc khu vườn</strong><div class="notice" id="careMessage">Tưới nước cho cây mỗi ngày để khu vườn thêm xanh.</div></div>
+<div style="flex:1"><strong>🌿 Chăm sóc khu vườn</strong><div class="notice" id="careMessage">Tưới nước cho cây mỗi ngày.</div></div>
 <button class="action" id="careButton">💧 Tưới cây</button>
 </div>
 </div>
-<div class="card"><h2>🔓 Những điều đang chờ mở khóa</h2><div class="unlock-grid" id="unlockList"></div></div>
-<div class="card"><h2>💚 Nhiệm vụ hôm nay</h2><p id="todaySummary">Hãy chọn một việc tốt trong danh sách nhiệm vụ.</p><button class="action" onclick="showTab('tasks')">Xem nhiệm vụ hôm nay</button></div>
+
+<div class="card">
+<h2>🏆 Chế độ hoàn thành khu vườn</h2>
+<p>Bạn có thể mở khóa toàn bộ khu vườn ngay lập tức bằng một thao tác. Dữ liệu ngày gieo hạt, nhật ký, điểm và nhiệm vụ hiện tại sẽ được giữ nguyên.</p>
+<button class="complete" id="completeGarden">🏆 HOÀN THÀNH KHU VƯỜN – MỞ KHÓA CẤP 8</button>
+<p class="notice" id="completeMessage">Nút này chỉ mở khóa tiến trình trò chơi trên trình duyệt hiện tại. Không làm thay đổi ngày gieo hạt thực tế.</p>
+</div>
+
+<div class="card"><h2>🔓 Những điều đã mở khóa</h2><div class="unlock-grid" id="unlockList"></div></div>
+<div class="card"><h2>💚 Nhiệm vụ hôm nay</h2><p id="todaySummary"></p><button class="action" onclick="showTab('tasks')">Xem nhiệm vụ</button></div>
 </section>
+
 <section id="tasks" class="panel">
 <div class="card">
 <h2>💚 Vườn nhiệm vụ tử tế</h2>
-<p class="muted">Mỗi ngày có 3 nhiệm vụ gợi ý. Hoàn thành việc thực tế bạn đã làm để nhận phần thưởng.</p>
+<p class="muted">Mỗi ngày có 3 nhiệm vụ gợi ý. Hoàn thành việc thực tế để nhận thưởng.</p>
 <div class="stats">
 <div class="stat"><strong id="missionDone">0/3</strong>Đã hoàn thành</div>
-<div class="stat"><strong id="missionReward">0</strong>Hạt nhận hôm nay</div>
+<div class="stat"><strong id="missionReward">0</strong>Hạt hôm nay</div>
 <div class="stat"><strong id="missionKarma">0</strong>Điểm hôm nay</div>
 </div>
 <div id="missionList"></div>
-<p class="notice">Mỗi nhiệm vụ chỉ nhận thưởng một lần trong ngày. Hãy chọn việc bạn thực sự đã làm, không cần chạy theo điểm số.</p>
 </div>
-<div class="card"><h2>🌼 Nguyên tắc gieo hạt</h2><p>Không cần làm điều lớn lao. Một lời hỏi thăm, một sự lắng nghe, một hành động giúp đỡ nhỏ cũng là hạt giống tốt.</p></div>
 </section>
+
 <section id="community" class="panel">
 <div class="card">
 <h2>🤝 Khu vườn cộng đồng</h2>
-<div class="quote">“Một người gieo một hạt. Nhiều người cùng gieo, thành rừng xanh.”</div>
+<div class="quote">Một người gieo một hạt. Nhiều người cùng gieo, thành rừng xanh.</div>
 <div class="stats" style="margin-top:14px">
 <div class="stat"><strong id="communitySeeds">0</strong>Hạt đóng góp</div>
 <div class="stat"><strong id="communityFlowers">0</strong>Bông sen</div>
@@ -183,18 +177,28 @@ footer{padding:24px 12px;text-align:center;color:#e8dfbf}
 </div>
 <button class="action" id="contribute">Góp một hạt cho cộng đồng</button>
 <p id="communityMessage" class="muted"></p>
-<p class="notice">Đây là bản thử nghiệm lưu trên trình duyệt hiện tại. Dữ liệu cộng đồng chưa đồng bộ giữa nhiều thiết bị.</p>
+<p class="notice">Đây là bản thử nghiệm lưu trên trình duyệt hiện tại, chưa đồng bộ nhiều thiết bị.</p>
 </div>
 </section>
-<section id="achievements" class="panel"><div class="card"><h2>🏅 Thành tựu nhân duyên</h2><p class="muted">Huy hiệu được mở khóa theo hành trình của bạn.</p><div class="badges" id="badges"></div></div></section>
+
+<section id="achievements" class="panel"><div class="card"><h2>🏅 Thành tựu nhân duyên</h2><div class="badges" id="badges"></div></div></section>
+
 <section id="journal" class="panel">
-<div class="card"><h2>📖 Nhật ký việc tốt</h2><p class="muted">Ghi lại điều đẹp đẽ bạn đã làm hôm nay.</p><textarea id="journalInput" placeholder="Hôm nay tôi đã..."></textarea><button class="action" id="saveJournal">Lưu nhật ký</button><div id="journalList"></div></div>
-</section>
+<div class="card"><h2>📖 Nhật ký việc tốt</h2>
+<textarea id="journalInput" placeholder="Hôm nay tôi đã..."></textarea>
+<button class="action" id="saveJournal">Lưu nhật ký</button>
+<div id="journalList"></div>
+</div></section>
+
 <section id="mindful" class="panel">
-<div class="card"><h2>🪷 Một phút tĩnh tâm</h2><div class="quote" id="quote">Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.</div><p style="text-align:center"><button class="action" id="newQuote">Một lời nhắc khác</button></p><p class="notice">Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng. Không cần vội vàng trở thành ai khác.</p></div>
-</section>
+<div class="card"><h2>🪷 Một phút tĩnh tâm</h2>
+<div class="quote" id="quote">Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.</div>
+<p style="text-align:center"><button class="action" id="newQuote">Một lời nhắc khác</button></p>
+<p class="notice">Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng.</p>
+</div></section>
 </main>
 <footer>🌿 Gieo một điều tốt đẹp hôm nay, để ngày mai thế giới thêm xanh.</footer>
+
 <script>
 function readStore(key,fallback){
  try{const raw=localStorage.getItem(key);return raw===null?fallback:JSON.parse(raw)}
@@ -209,83 +213,71 @@ function safeNumber(value,fallback=0){
  const n=Number(value);return Number.isFinite(n)&&n>=0?n:fallback;
 }
 
-/* GIU NGUYEN DU LIEU CU */
+/* DOC DU LIEU CU, KHONG XOA */
 let days=safeNumber(localStorage.getItem('gardenDays'),0);
 let seeds=safeNumber(localStorage.getItem('gardenSeeds'),0);
 let lastDate=localStorage.getItem('gardenLastDate')||'';
 let community=safeNumber(readStore('gardenCommunitySeeds',0));
 let journal=readStore('gardenJournal',[]);
 if(!Array.isArray(journal))journal=[];
-let completed=readStore('gardenTaskDates',[]);
-if(!Array.isArray(completed))completed=[];
-let selectedTask=safeNumber(readStore('gardenSelectedTask',0));
 let karma=safeNumber(readStore('gardenKarma',0));
 let streak=safeNumber(readStore('gardenStreak',0));
 let streakDate=readStore('gardenStreakDate','');
 let missionHistory=readStore('gardenMissionCompletions',{});
-if(!missionHistory||typeof missionHistory!=='object'||Array.isArray(missionHistory))missionHistory={};
+if(!missionHistory||typeof missionHistory!=='object')missionHistory={};
 let communityContributed=readStore('gardenContributionDates',[]);
 if(!Array.isArray(communityContributed))communityContributed=[];
 let carePoints=safeNumber(readStore('gardenCarePoints',0));
 let careDates=readStore('gardenCareDates',[]);
 if(!Array.isArray(careDates))careDates=[];
 
-/* DANH DAU VA CONG BU PHAN THUONG CU MOT LAN */
-function migrateMissionRewards(){
- const marker='gardenMissionSeedSyncV1';
- if(localStorage.getItem(marker)==='done')return;
- const oldToday=missionHistory[today()];
- const alreadyCompleted=Array.isArray(oldToday)?oldToday.length:0;
- if(alreadyCompleted>0){
-   seeds+=alreadyCompleted;
-   localStorage.setItem('gardenSeeds',String(seeds));
- }
- localStorage.setItem(marker,'done');
-}
-migrateMissionRewards();
-
+/* GIU CAC KHOA DU LIEU CU */
 const levels=[
- {min:0,level:1,name:'Hạt giống',emoji:'🌰',note:'Một hành trình tốt đẹp bắt đầu từ một hạt giống nhỏ.',flowers:'',unlock:'Khu đất khởi đầu'},
- {min:1,level:2,name:'Mầm non',emoji:'🌱',note:'Mầm non đang lớn lên từng ngày.',flowers:'',unlock:'Mầm cây đầu tiên'},
- {min:3,level:3,name:'Cây con',emoji:'🌿',note:'Những chiếc lá non đang vươn mình đón nắng.',flowers:'🌼',unlock:'Khóm hoa đầu tiên'},
- {min:6,level:4,name:'Cây trưởng thành',emoji:'🌳',note:'Tán cây đã rộng hơn, chim nhỏ ghé thăm.',flowers:'🌸 🌼',unlock:'Chim về làm tổ'},
- {min:10,level:5,name:'Cây nở hoa',emoji:'🌳',note:'Những bông hoa đầu tiên đã nở rực rỡ.',flowers:'🌸 🌺 🌸',unlock:'Vườn hoa nở rộ'},
- {min:20,level:6,name:'Cổ thụ nhân duyên',emoji:'🌳',note:'Cổ thụ tỏa bóng mát, khu vườn thêm trù phú.',flowers:'🌸 🌺 🌼 🌸',unlock:'Cổ thụ và hồ sen'},
- {min:35,level:7,name:'Khu vườn an lành',emoji:'🌳',note:'Bướm chim tìm về, hoa sen khoe sắc.',flowers:'🌸 🌺 🌼 🪷',unlock:'Hồ sen lung linh'},
- {min:50,level:8,name:'Vườn nhân duyên',emoji:'🌳',note:'Bạn đã vun trồng một khu vườn của lòng tốt.',flowers:'🌸 🌺 🌼 🪷 🌷',unlock:'Khu vườn viên mãn'}
+ {min:0,level:1,name:'Hạt giống',emoji:'🌰',note:'Hành trình tốt đẹp bắt đầu từ một hạt giống nhỏ.',flowers:''},
+ {min:1,level:2,name:'Mầm non',emoji:'🌱',note:'Mầm non đang lớn lên từng ngày.',flowers:''},
+ {min:3,level:3,name:'Cây con',emoji:'🌿',note:'Những chiếc lá non đang vươn mình.',flowers:'🌼'},
+ {min:6,level:4,name:'Cây trưởng thành',emoji:'🌳',note:'Tán cây đã rộng hơn.',flowers:'🌸 🌼'},
+ {min:10,level:5,name:'Cây nở hoa',emoji:'🌳',note:'Những bông hoa đầu tiên đã nở.',flowers:'🌸 🌺 🌸'},
+ {min:20,level:6,name:'Cổ thụ nhân duyên',emoji:'🌳',note:'Cổ thụ tỏa bóng mát.',flowers:'🌸 🌺 🌼 🌸'},
+ {min:35,level:7,name:'Khu vườn an lành',emoji:'🌳',note:'Bướm chim tìm về, hoa sen khoe sắc.',flowers:'🌸 🌺 🌼 🪷'},
+ {min:50,level:8,name:'Vườn nhân duyên',emoji:'🌳',note:'Bạn đã vun trồng một khu vườn của lòng tốt.',flowers:'🌸 🌺 🌼 🪷 🌷'}
 ];
 function levelInfo(){
  let result=levels[0];
- for(const item of levels){if(seeds>=item.min)result=item}
+ for(const item of levels)if(seeds>=item.min)result=item;
  const next=levels.find(item=>item.min>seeds);
  const progress=next?((seeds-result.min)/(next.min-result.min))*100:100;
  return {...result,progress,next};
 }
 
 const taskBank=[
- {icon:'☎️',title:'Gọi điện hỏi thăm cha mẹ',desc:'Dành vài phút hỏi thăm sức khỏe và trò chuyện với cha mẹ.',karma:5},
- {icon:'🤝',title:'Giúp đỡ một người',desc:'Chủ động giúp một người đang cần sự hỗ trợ.',karma:5},
- {icon:'🙏',title:'Nói lời cảm ơn chân thành',desc:'Thể hiện sự biết ơn với một người đã giúp bạn.',karma:3},
- {icon:'🌱',title:'Chăm sóc cây xanh',desc:'Tưới cây hoặc chăm sóc một góc xanh quanh bạn.',karma:3},
- {icon:'🧹',title:'Làm sạch một góc nhỏ',desc:'Dọn dẹp nơi ở hoặc nhặt rác đúng nơi quy định.',karma:4},
- {icon:'👂',title:'Lắng nghe người thân',desc:'Dành thời gian lắng nghe mà không ngắt lời.',karma:5},
- {icon:'📚',title:'Chia sẻ kiến thức hữu ích',desc:'Chia sẻ một điều có ích cho người khác.',karma:4},
- {icon:'💌',title:'Gửi lời động viên',desc:'Nhắn một lời khích lệ tới người đang gặp khó khăn.',karma:4},
- {icon:'🪷',title:'Dành một phút tĩnh tâm',desc:'Ngồi yên, thở chậm và quan sát tâm mình.',karma:2},
- {icon:'🍚',title:'Chia sẻ một điều thiết thực',desc:'Tặng hoặc chia sẻ món đồ còn tốt với người cần.',karma:5},
- {icon:'😊',title:'Trao một nụ cười',desc:'Chào hỏi và cư xử thân thiện với mọi người.',karma:2},
- {icon:'📵',title:'Bớt một khoảng thời gian màn hình',desc:'Dành thời gian đó cho gia đình hoặc thiên nhiên.',karma:3}
+ {icon:'☎️',title:'Gọi điện hỏi thăm cha mẹ',desc:'Dành vài phút hỏi thăm sức khỏe.',karma:5},
+ {icon:'🤝',title:'Giúp đỡ một người',desc:'Chủ động giúp người cần hỗ trợ.',karma:5},
+ {icon:'🙏',title:'Nói lời cảm ơn chân thành',desc:'Thể hiện sự biết ơn.',karma:3},
+ {icon:'🌱',title:'Chăm sóc cây xanh',desc:'Tưới cây hoặc chăm sóc góc xanh.',karma:3},
+ {icon:'🧹',title:'Làm sạch một góc nhỏ',desc:'Dọn dẹp nơi ở.',karma:4},
+ {icon:'👂',title:'Lắng nghe người thân',desc:'Dành thời gian lắng nghe.',karma:5},
+ {icon:'📚',title:'Chia sẻ kiến thức hữu ích',desc:'Chia sẻ điều có ích.',karma:4},
+ {icon:'💌',title:'Gửi lời động viên',desc:'Nhắn lời khích lệ.',karma:4},
+ {icon:'🪷',title:'Dành một phút tĩnh tâm',desc:'Ngồi yên và thở chậm.',karma:2},
+ {icon:'🍚',title:'Chia sẻ điều thiết thực',desc:'Chia sẻ món đồ còn tốt.',karma:5},
+ {icon:'😊',title:'Trao một nụ cười',desc:'Cư xử thân thiện.',karma:2},
+ {icon:'📵',title:'Bớt thời gian màn hình',desc:'Dành thời gian cho gia đình.',karma:3}
 ];
 function dailyMissions(){
  const key=today();let seed=0;
  for(let i=0;i<key.length;i++)seed=(seed*31+key.charCodeAt(i))>>>0;
  const pool=taskBank.slice(),chosen=[];
- for(let i=0;i<3;i++){seed=(seed*1664525+1013904223)>>>0;chosen.push(pool.splice(seed%pool.length,1)[0])}
+ for(let i=0;i<3;i++){
+  seed=(seed*1664525+1013904223)>>>0;
+  chosen.push(pool.splice(seed%pool.length,1)[0]);
+ }
  return chosen;
 }
 let missions=dailyMissions();
-function completedToday(){return Array.isArray(missionHistory[today()])?missionHistory[today()]:[]}
-
+function completedToday(){
+ return Array.isArray(missionHistory[today()])?missionHistory[today()]:[];
+}
 function updateStreak(){
  const t=today();if(streakDate===t)return;
  const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
@@ -294,6 +286,7 @@ function updateStreak(){
  save('gardenStreak',streak);save('gardenStreakDate',streakDate);
 }
 
+/* NGAY VA DEM */
 let manualScene=null;
 function updateDayNight(){
  const hour=new Date().getHours();
@@ -304,43 +297,53 @@ function updateDayNight(){
  document.getElementById('sceneLabel').textContent=isDay?'☀️ Khu vườn ban ngày':'🌙 Khu vườn đêm';
 }
 document.getElementById('toggleDay').addEventListener('click',()=>{
- manualScene=document.getElementById('scene').classList.contains('day')?'night':'day';updateDayNight();
+ manualScene=document.getElementById('scene').classList.contains('day')?'night':'day';
+ updateDayNight();
 });
-updateDayNight();setInterval(()=>{if(manualScene===null)updateDayNight()},60000);
+updateDayNight();
+setInterval(()=>{if(manualScene===null)updateDayNight()},60000);
 
+/* VE KHU VUON THEO CAP */
 function renderGarden(){
  const info=levelInfo();
  document.getElementById('tree').textContent=info.emoji;
  document.getElementById('treeFlowers').textContent=info.flowers;
- document.getElementById('lotus').textContent=seeds>=20?'🪷　🌸　🪷':'🌸　🌸';
+ document.getElementById('lotus').textContent=seeds>=20?'🪷　🌸　🪷　🌺':'🌸　🌸';
  document.getElementById('mountains').textContent=seeds>=35?'🏔️　⛰️　🏔️':'⛰️　🏔️　⛰️';
- document.querySelectorAll('.lantern').forEach(el=>el.style.opacity=seeds>=6?'1':'.45');
  document.querySelectorAll('.butterfly').forEach(el=>el.style.display=seeds>=3?'block':'none');
  document.querySelectorAll('.bird').forEach(el=>el.style.display=seeds>=6?'block':'none');
  document.querySelectorAll('.flower').forEach(el=>el.style.opacity=seeds>=3?'1':'.45');
 }
 function renderUnlocks(){
- const list=[['🌱','Mầm cây',1],['🌼','Khóm hoa',3],['🐦','Chim về vườn',6],['🏮','Đèn lồng',6],['🌺','Vườn hoa',10],['🪷','Hồ sen',20],['🏔️','Núi xanh',35],['✨','Vườn viên mãn',50]];
- document.getElementById('unlockList').innerHTML=list.map(x=>`<div class="unlock-item ${seeds>=x[2]?'':'locked'}"><span>${x[0]}</span><strong>${x[1]}</strong><div class="notice">${seeds>=x[2]?'Đã mở khóa':'Cần '+x[2]+' hạt'}</div></div>`).join('');
+ const list=[
+ ['🌱','Mầm cây',1],['🌼','Khóm hoa',3],['🐦','Chim về vườn',6],
+ ['🏮','Đèn lồng',6],['🌺','Vườn hoa',10],['🪷','Hồ sen',20],
+ ['🏔️','Núi xanh',35],['✨','Vườn viên mãn',50]
+ ];
+ document.getElementById('unlockList').innerHTML=list.map(x=>
+ `<div class="unlock-item ${seeds>=x[2]?'':'locked'}"><span>${x[0]}</span><strong>${x[1]}</strong><div class="notice">${seeds>=x[2]?'Đã mở khóa':'Cần '+x[2]+' hạt'}</div></div>`
+ ).join('');
 }
+
+/* NHIEM VU */
 function renderMissions(){
  const done=completedToday(),list=document.getElementById('missionList');
  list.innerHTML=missions.map((m,i)=>`
  <div class="mission ${done.includes(i)?'done':''}">
  <div class="symbol">${m.icon}</div><div class="detail">
- <strong>${m.title} ${done.includes(i)?'✓':''}</strong><small>${m.desc}</small>
- <div class="reward">🎁 Thưởng: 1 hạt giống + ${m.karma} điểm nhân duyên</div></div>
- <button class="action ${done.includes(i)?'secondary':''}" data-mission="${i}" ${done.includes(i)?'disabled':''}>${done.includes(i)?'Đã nhận':'Hoàn thành'}</button>
+ <strong>${m.title} ${done.includes(i)?'✓':''}</strong>
+ <small>${m.desc}</small>
+ <div class="reward">🎁 Thưởng: 1 hạt + ${m.karma} điểm nhân duyên</div>
+ </div>
+ <button class="action" data-mission="${i}" ${done.includes(i)?'disabled':''}>${done.includes(i)?'Đã nhận':'Hoàn thành'}</button>
  </div>`).join('');
- list.querySelectorAll('[data-mission]').forEach(button=>button.addEventListener('click',()=>completeMission(Number(button.dataset.mission))));
- const count=done.length;
- document.getElementById('missionDone').textContent=count+'/3';
- document.getElementById('missionReward').textContent=count;
+ list.querySelectorAll('[data-mission]').forEach(button=>
+ button.addEventListener('click',()=>completeMission(Number(button.dataset.mission))));
+ document.getElementById('missionDone').textContent=done.length+'/3';
+ document.getElementById('missionReward').textContent=done.length;
  document.getElementById('missionKarma').textContent=missions.reduce((sum,m,i)=>sum+(done.includes(i)?m.karma:0),0);
- document.getElementById('todaySummary').textContent=count===3?'Bạn đã hoàn thành cả 3 nhiệm vụ hôm nay. Thật tuyệt!':`Bạn đã hoàn thành ${count}/3 nhiệm vụ hôm nay. Mỗi việc tốt đều đáng trân trọng.`;
+ document.getElementById('todaySummary').textContent=done.length===3?'Bạn đã hoàn thành cả 3 nhiệm vụ hôm nay.':`Bạn đã hoàn thành ${done.length}/3 nhiệm vụ hôm nay.`;
 }
-
-/* NHAN THUONG MOI NHIEM VU MOT LAN */
 function completeMission(index){
  if(index<0||index>=missions.length)return;
  const done=completedToday();if(done.includes(index))return;
@@ -356,29 +359,57 @@ function completeMission(index){
  localStorage.setItem('gardenSeeds',String(seeds));
  save('gardenKarma',karma);
  render();
- alert('🌱 Bạn đã nhận 1 hạt giống và '+missions[index].karma+' điểm nhân duyên. Cảm ơn bạn đã gieo điều tốt đẹp!');
+ alert('🌱 Bạn nhận 1 hạt giống và '+missions[index].karma+' điểm nhân duyên!');
 }
 
+/* NUT HOAN THANH NGAY - CHI THUC HIEN MOT LAN */
+document.getElementById('completeGarden').addEventListener('click',()=>{
+ const marker='gardenInstantCompleteV1';
+ if(localStorage.getItem(marker)==='done'){
+  alert('🏆 Khu vườn đã được mở khóa toàn bộ rồi!');
+  return;
+ }
+ const ok=confirm('Bạn muốn mở khóa toàn bộ 8 cấp độ ngay bây giờ? Số hạt sẽ được đặt thành 50 nếu hiện tại thấp hơn 50. Các dữ liệu khác được giữ nguyên.');
+ if(!ok)return;
+ seeds=Math.max(seeds,50);
+ localStorage.setItem('gardenSeeds',String(seeds));
+ localStorage.setItem(marker,'done');
+ document.getElementById('completeMessage').textContent='🏆 Khu vườn đã hoàn thành! Toàn bộ 8 cấp độ đã được mở khóa.';
+ render();
+ alert('🎉 Chúc mừng! Khu Vườn Nhân Duyên đã đạt cấp 8 – Vườn nhân duyên!');
+});
+
+/* CHAM SOC */
 document.getElementById('careButton').addEventListener('click',()=>{
  const key=today();
- if(careDates.includes(key)){document.getElementById('careMessage').textContent='Hôm nay bạn đã tưới cây rồi. Ngày mai hãy quay lại nhé!';return}
+ if(careDates.includes(key)){
+  document.getElementById('careMessage').textContent='Hôm nay bạn đã tưới cây rồi. Ngày mai hãy quay lại nhé!';
+  return;
+ }
  careDates.push(key);carePoints++;
  save('gardenCareDates',careDates);save('gardenCarePoints',carePoints);
- document.getElementById('careMessage').textContent='🌿 Cây đã được tưới nước. Cảm ơn bạn đã chăm sóc khu vườn!';
+ document.getElementById('careMessage').textContent='🌿 Cây đã được tưới nước. Cảm ơn bạn!';
  render();
 });
 
+/* THANH TUU */
 function renderBadges(){
  const list=[
- ['🌱','Hạt giống đầu tiên',seeds>=1],['🌿','Mầm xanh',seeds>=3],['🌳','Cây trưởng thành',seeds>=6],
- ['🌺','Hoa nhân duyên',seeds>=10],['🦋','Vườn bướm về',seeds>=10],['🪷','Hồ sen an lành',seeds>=20],
- ['🏔️','Núi xanh',seeds>=35],['✨','Vườn viên mãn',seeds>=50],['🔥','Bền bỉ 3 ngày',streak>=3],
- ['🏅','Bền bỉ 7 ngày',streak>=7],['🤝','Người gieo hạt cộng đồng',community>=1],
- ['💛','Tấm lòng rộng mở',karma>=50],['🌟','Người gieo duyên lành',seeds>=30],
- ['💧','Người chăm vườn',carePoints>=5],['🪷','Tâm an',karma>=100],['🌳','Bậc vun trồng',seeds>=100]
+ ['🌱','Hạt giống đầu tiên',seeds>=1],['🌿','Mầm xanh',seeds>=3],
+ ['🌳','Cây trưởng thành',seeds>=6],['🌺','Hoa nhân duyên',seeds>=10],
+ ['🦋','Vườn bướm về',seeds>=10],['🪷','Hồ sen an lành',seeds>=20],
+ ['🏔️','Núi xanh',seeds>=35],['✨','Vườn viên mãn',seeds>=50],
+ ['🔥','Bền bỉ 3 ngày',streak>=3],['🏅','Bền bỉ 7 ngày',streak>=7],
+ ['🤝','Người gieo hạt cộng đồng',community>=1],['💛','Tấm lòng rộng mở',karma>=50],
+ ['🌟','Người gieo duyên lành',seeds>=30],['💧','Người chăm vườn',carePoints>=5],
+ ['🪷','Tâm an',karma>=100],['🌳','Bậc vun trồng',seeds>=100]
  ];
- document.getElementById('badges').innerHTML=list.map(b=>`<div class="badgebox ${b[2]?'':'locked'}"><span>${b[0]}</span>${b[1]}</div>`).join('');
+ document.getElementById('badges').innerHTML=list.map(b=>
+ `<div class="badgebox ${b[2]?'':'locked'}"><span>${b[0]}</span>${b[1]}</div>`
+ ).join('');
 }
+
+/* NHAT KY */
 function escapeHTML(value){
  return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -386,25 +417,32 @@ function renderJournal(){
  document.getElementById('journalList').innerHTML=journal.slice().reverse().map(item=>{
   if(typeof item==='string')return `<div class="entry">${escapeHTML(item)}</div>`;
   return `<div class="entry"><strong>${escapeHTML(item.date||'Nhật ký')}</strong><p>${escapeHTML(item.text||'')}</p></div>`;
- }).join('')||'<p class="muted">Chưa có ghi chép nào. Hãy lưu điều tốt đẹp đầu tiên.</p>';
+ }).join('')||'<p class="muted">Chưa có ghi chép nào.</p>';
 }
 document.getElementById('saveJournal').addEventListener('click',()=>{
  const input=document.getElementById('journalInput'),text=input.value.trim();
  if(!text){alert('Bạn hãy viết vài dòng trước khi lưu nhé.');return}
  journal.push({date:new Date().toLocaleDateString('vi-VN'),text});
  save('gardenJournal',journal);input.value='';renderJournal();
- alert('📖 Nhật ký đã được lưu trên thiết bị này.');
+ alert('📖 Nhật ký đã được lưu.');
 });
 
+/* CONG DONG */
 document.getElementById('contribute').addEventListener('click',()=>{
- if(seeds<1){document.getElementById('communityMessage').textContent='Hãy gieo ít nhất một hạt tử tế trước nhé.';return}
+ if(seeds<1)return;
  const key=today();
- if(communityContributed.includes(key)){document.getElementById('communityMessage').textContent='Bạn đã đóng góp hạt hôm nay rồi. Hẹn gặp lại ngày mai!';return}
+ if(communityContributed.includes(key)){
+  document.getElementById('communityMessage').textContent='Bạn đã đóng góp hạt hôm nay rồi.';
+  return;
+ }
  community++;communityContributed.push(key);
- save('gardenCommunitySeeds',community);save('gardenContributionDates',communityContributed);
- document.getElementById('communityMessage').textContent='🌱 Cảm ơn bạn đã góp một hạt lành cho khu vườn!';
+ save('gardenCommunitySeeds',community);
+ save('gardenContributionDates',communityContributed);
+ document.getElementById('communityMessage').textContent='🌱 Cảm ơn bạn đã góp một hạt lành!';
  render();
 });
+
+/* TINH TAM */
 const quotes=[
  'Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.',
  'Chậm lại một chút, ta sẽ thấy điều bình dị cũng rất đẹp.',
@@ -418,13 +456,17 @@ document.getElementById('newQuote').addEventListener('click',()=>{
  const options=quotes.filter(q=>q!==current);
  document.getElementById('quote').textContent=options[Math.floor(Math.random()*options.length)];
 });
+
+/* CHUYEN TAB */
 function showTab(id){
  document.querySelectorAll('nav button').forEach(button=>button.classList.toggle('active',button.dataset.tab===id));
  document.querySelectorAll('.panel').forEach(panel=>panel.classList.toggle('active',panel.id===id));
  window.scrollTo({top:0,behavior:'smooth'});
 }
-document.querySelectorAll('nav button').forEach(button=>button.addEventListener('click',()=>showTab(button.dataset.tab)));
+document.querySelectorAll('nav button').forEach(button=>
+ button.addEventListener('click',()=>showTab(button.dataset.tab)));
 
+/* CAP NHAT GIAO DIEN */
 function render(){
  const info=levelInfo();
  document.getElementById('days').textContent=days;
@@ -432,7 +474,9 @@ function render(){
  document.getElementById('level').textContent=info.level;
  document.getElementById('stage').textContent=info.emoji+' '+info.name;
  document.getElementById('progress').style.width=Math.max(0,Math.min(100,info.progress))+'%';
- document.getElementById('nextText').textContent=info.next?`Còn ${info.next.min-seeds} hạt nữa để mở cấp ${info.next.level}: ${info.next.name}.`:'Bạn đã mở khóa cấp độ cao nhất!';
+ document.getElementById('nextText').textContent=info.next?
+ `Còn ${info.next.min-seeds} hạt để mở cấp ${info.next.level}: ${info.next.name}.`:
+ '🎉 Bạn đã mở khóa toàn bộ khu vườn!';
  document.getElementById('levelNote').textContent=info.note;
  document.getElementById('karma').textContent=karma;
  document.getElementById('streak').textContent=streak;
@@ -443,6 +487,7 @@ function render(){
  document.getElementById('careButton').disabled=cared;
  document.getElementById('careButton').textContent=cared?'✓ Đã tưới hôm nay':'💧 Tưới cây';
  if(cared)document.getElementById('careMessage').textContent='Hôm nay khu vườn đã được bạn chăm sóc.';
+ document.getElementById('completeMessage').textContent=localStorage.getItem('gardenInstantCompleteV1')==='done'?'🏆 Khu vườn đã được mở khóa toàn bộ.':'Bạn có thể mở khóa toàn bộ khu vườn bằng nút phía trên.';
  renderGarden();renderUnlocks();renderMissions();renderBadges();renderJournal();
 }
 render();
