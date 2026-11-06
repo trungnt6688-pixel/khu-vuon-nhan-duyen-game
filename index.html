@@ -7,10 +7,7 @@
 <meta name="theme-color" content="#123b35">
 <title>Khu Vườn Nhân Duyên</title>
 <style>
-:root{
-  --deep:#103a35;--green:#477b55;--gold:#e8cb83;
-  --cream:#fff9e9;--ink:#294b3d;--muted:#71816d;
-}
+:root{--deep:#103a35;--green:#477b55;--gold:#e8cb83;--cream:#fff9e9;--ink:#294b3d;--muted:#71816d}
 *{box-sizing:border-box;font-family:Arial,Tahoma,sans-serif}
 body{margin:0;color:var(--ink);background:linear-gradient(180deg,#102f32,#194b40);font-size:16px;line-height:1.55}
 button,textarea,input{font:inherit}button{cursor:pointer}
@@ -37,8 +34,6 @@ main{max-width:1080px;margin:auto;padding:15px}
 .action:disabled{background:#9aa996;cursor:not-allowed}
 .secondary{background:#e9edda;color:#365b43;border:1px solid #b9c9a9}
 .quote{padding:22px;border-radius:15px;background:#edf1df;text-align:center;font-size:19px;line-height:1.7}
-
-/* KHU VUON */
 .scene{position:relative;height:455px;overflow:hidden;border:2px solid #d8bd78;border-radius:25px;background:linear-gradient(to bottom,#172747,#506c7a 48%,#9aab83 77%,#47795b);box-shadow:0 13px 35px #061b19aa;isolation:isolate;transition:background 1.5s}
 .scene.day{background:linear-gradient(to bottom,#73b9df,#b8dfd0 48%,#e0e8ad 77%,#579260)}
 .scene:after{content:"";position:absolute;left:0;right:0;bottom:105px;height:3px;background:#e2d99e;z-index:3}
@@ -85,11 +80,8 @@ main{max-width:1080px;margin:auto;padding:15px}
 @keyframes lotusFloat{50%{transform:translateY(-5px)}}
 .leaf{position:absolute;bottom:8px;width:31px;height:16px;background:linear-gradient(135deg,#9acb69,#3f874f);border:2px solid #275c40;border-radius:100% 0 100% 0}
 .leaf.a{left:10%}.leaf.b{left:31%;bottom:18px}.leaf.c{left:67%}.leaf.d{right:8%;bottom:19px}
-.locked-scene{filter:grayscale(.7);opacity:.3}
 .care-panel{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;padding:12px;background:#edf1df;border-radius:14px}
 .care-panel strong{color:#477b55}
-
-/* NHIEM VU */
 .mission{display:flex;gap:12px;align-items:flex-start;margin:10px 0;padding:14px;border-radius:15px;background:#edf1df;border:1px solid transparent}
 .mission.done{background:#e4efdc;border-color:#8bb17d}
 .mission .symbol{font-size:27px}.mission .detail{flex:1}
@@ -105,189 +97,119 @@ textarea{width:100%;min-height:95px;padding:12px;border:1px solid #bdcbb4;border
 .unlock-item{padding:12px;border-radius:13px;background:#edf1df;text-align:center}
 .unlock-item span{display:block;font-size:28px}
 footer{padding:24px 12px;text-align:center;color:#e8dfbf}
-@media(max-width:600px){
- main{padding:10px}.scene{height:420px}.stats{gap:5px}.stat strong{font-size:23px}
- .card{padding:16px}.badges{grid-template-columns:repeat(2,1fr)}
- nav button{font-size:12px;padding:9px 10px}.tree{right:9%;font-size:78px}
- .branch{right:7%;width:120px}.bridge{left:31%;width:38%}.mission{flex-wrap:wrap}
-}
+@media(max-width:600px){main{padding:10px}.scene{height:420px}.stats{gap:5px}.stat strong{font-size:23px}.card{padding:16px}.badges{grid-template-columns:repeat(2,1fr)}nav button{font-size:12px;padding:9px 10px}.tree{right:9%;font-size:78px}.branch{right:7%;width:120px}.bridge{left:31%;width:38%}.mission{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">🌱</div>
-  <h1>KHU VƯỜN NHÂN DUYÊN</h1>
-  <p>Một hạt giống nhỏ – Ngàn điều tốt đẹp.</p>
+<div class="logo">🌱</div>
+<h1>KHU VƯỜN NHÂN DUYÊN</h1>
+<p>Một hạt giống nhỏ – Ngàn điều tốt đẹp.</p>
 </header>
-
 <nav>
-  <button class="active" data-tab="garden">🌳 Khu vườn</button>
-  <button data-tab="tasks">💚 Nhiệm vụ</button>
-  <button data-tab="community">🤝 Cộng đồng</button>
-  <button data-tab="achievements">🏅 Thành tựu</button>
-  <button data-tab="journal">📖 Nhật ký</button>
-  <button data-tab="mindful">🪷 Tĩnh tâm</button>
+<button class="active" data-tab="garden">🌳 Khu vườn</button>
+<button data-tab="tasks">💚 Nhiệm vụ</button>
+<button data-tab="community">🤝 Cộng đồng</button>
+<button data-tab="achievements">🏅 Thành tựu</button>
+<button data-tab="journal">📖 Nhật ký</button>
+<button data-tab="mindful">🪷 Tĩnh tâm</button>
 </nav>
-
 <main>
 <section id="garden" class="panel active">
-  <div class="scene" id="scene">
-    <div class="stars">✦　✧　✦　✧　✦　✧　✦</div>
-    <div class="sunmoon"></div>
-    <div class="cloud">☁️</div><div class="cloud two">☁️</div>
-    <button class="scene-control" id="toggleDay">🌙 Chuyển ban đêm</button>
-    <div class="welcome">
-      <h2>Khu vườn của bạn</h2>
-      <p>Mỗi việc tốt là một hạt giống lành.</p>
-    </div>
-    <div class="mountains" id="mountains">⛰️　🏔️　⛰️</div>
-    <div class="temple">🛕</div>
-    <div class="tree" id="tree">🌱</div>
-    <div class="tree-flowers" id="treeFlowers"></div>
-    <div class="branch"></div>
-    <span class="bird">🐦</span><span class="bird two">🐤</span>
-    <div class="flower f1">🌸</div><div class="flower f2">🌼</div>
-    <div class="flower f3">🌺</div><div class="flower f4">🌷</div>
-    <span class="butterfly b1">🦋</span><span class="butterfly b2">🦋</span>
-    <span class="butterfly b3">🦋</span><span class="butterfly b4">🦋</span>
-    <span class="firefly f1">✦</span><span class="firefly f2">✧</span>
-    <span class="firefly f3">✦</span><span class="firefly f4">✧</span>
-    <div class="bridge"></div>
-    <div class="lantern l1">🏮</div><div class="lantern l2">🏮</div>
-    <div class="caption" id="caption">Ánh trăng soi sáng khu vườn bình yên</div>
-    <div class="scene-label" id="sceneLabel">🌙 Khu vườn đêm</div>
-    <div class="pond">
-      <div class="wave"></div><div class="wave two"></div>
-      <div class="lotus" id="lotus">🌸　🌸</div>
-      <div class="leaf a"></div><div class="leaf b"></div>
-      <div class="leaf c"></div><div class="leaf d"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🌸 Hành trình của bạn</h2>
-    <div class="stats">
-      <div class="stat"><strong id="days">1</strong>Ngày gieo hạt</div>
-      <div class="stat"><strong id="level">2</strong>Cấp độ vườn</div>
-      <div class="stat"><strong id="seeds">1</strong>Hạt tử tế</div>
-    </div>
-    <div class="stage" id="stage">🌱 Mầm non</div>
-    <p class="muted" id="nextText"></p>
-    <div class="progress"><div id="progress"></div></div>
-    <div class="level-note" id="levelNote"></div>
-    <div class="reward-box">
-      <strong>✨ Điểm nhân duyên:</strong> <span id="karma">0</span>
-      <br><strong>🔥 Chuỗi ngày gieo hạt:</strong> <span id="streak">0</span> ngày
-      <br><strong>💧 Điểm chăm sóc:</strong> <span id="carePoints">0</span>
-    </div>
-    <div class="care-panel">
-      <div style="flex:1">
-        <strong>🌿 Chăm sóc khu vườn</strong>
-        <div class="notice" id="careMessage">Tưới nước cho cây mỗi ngày để khu vườn thêm xanh.</div>
-      </div>
-      <button class="action" id="careButton">💧 Tưới cây</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🔓 Những điều đang chờ mở khóa</h2>
-    <div class="unlock-grid" id="unlockList"></div>
-  </div>
-
-  <div class="card">
-    <h2>💚 Nhiệm vụ hôm nay</h2>
-    <p id="todaySummary">Hãy chọn một việc tốt trong danh sách nhiệm vụ.</p>
-    <button class="action" onclick="showTab('tasks')">Xem nhiệm vụ hôm nay</button>
-  </div>
+<div class="scene" id="scene">
+<div class="stars">✦　✧　✦　✧　✦　✧　✦</div>
+<div class="sunmoon"></div><div class="cloud">☁️</div><div class="cloud two">☁️</div>
+<button class="scene-control" id="toggleDay">🌙 Chuyển ban đêm</button>
+<div class="welcome"><h2>Khu vườn của bạn</h2><p>Mỗi việc tốt là một hạt giống lành.</p></div>
+<div class="mountains" id="mountains">⛰️　🏔️　⛰️</div>
+<div class="temple">🛕</div><div class="tree" id="tree">🌱</div>
+<div class="tree-flowers" id="treeFlowers"></div><div class="branch"></div>
+<span class="bird">🐦</span><span class="bird two">🐤</span>
+<div class="flower f1">🌸</div><div class="flower f2">🌼</div><div class="flower f3">🌺</div><div class="flower f4">🌷</div>
+<span class="butterfly b1">🦋</span><span class="butterfly b2">🦋</span><span class="butterfly b3">🦋</span><span class="butterfly b4">🦋</span>
+<span class="firefly f1">✦</span><span class="firefly f2">✧</span><span class="firefly f3">✦</span><span class="firefly f4">✧</span>
+<div class="bridge"></div><div class="lantern l1">🏮</div><div class="lantern l2">🏮</div>
+<div class="caption" id="caption">Ánh trăng soi sáng khu vườn bình yên</div>
+<div class="scene-label" id="sceneLabel">🌙 Khu vườn đêm</div>
+<div class="pond"><div class="wave"></div><div class="wave two"></div><div class="lotus" id="lotus">🌸　🌸</div><div class="leaf a"></div><div class="leaf b"></div><div class="leaf c"></div><div class="leaf d"></div></div>
+</div>
+<div class="card">
+<h2>🌸 Hành trình của bạn</h2>
+<div class="stats">
+<div class="stat"><strong id="days">1</strong>Ngày gieo hạt</div>
+<div class="stat"><strong id="level">2</strong>Cấp độ vườn</div>
+<div class="stat"><strong id="seeds">1</strong>Hạt tử tế</div>
+</div>
+<div class="stage" id="stage">🌱 Mầm non</div>
+<p class="muted" id="nextText"></p>
+<div class="progress"><div id="progress"></div></div>
+<div class="level-note" id="levelNote"></div>
+<div class="reward-box">
+<strong>✨ Điểm nhân duyên:</strong> <span id="karma">0</span>
+<br><strong>🔥 Chuỗi ngày gieo hạt:</strong> <span id="streak">0</span> ngày
+<br><strong>💧 Điểm chăm sóc:</strong> <span id="carePoints">0</span>
+</div>
+<div class="care-panel">
+<div style="flex:1"><strong>🌿 Chăm sóc khu vườn</strong><div class="notice" id="careMessage">Tưới nước cho cây mỗi ngày để khu vườn thêm xanh.</div></div>
+<button class="action" id="careButton">💧 Tưới cây</button>
+</div>
+</div>
+<div class="card"><h2>🔓 Những điều đang chờ mở khóa</h2><div class="unlock-grid" id="unlockList"></div></div>
+<div class="card"><h2>💚 Nhiệm vụ hôm nay</h2><p id="todaySummary">Hãy chọn một việc tốt trong danh sách nhiệm vụ.</p><button class="action" onclick="showTab('tasks')">Xem nhiệm vụ hôm nay</button></div>
 </section>
-
 <section id="tasks" class="panel">
-  <div class="card">
-    <h2>💚 Vườn nhiệm vụ tử tế</h2>
-    <p class="muted">Mỗi ngày có 3 nhiệm vụ gợi ý. Hoàn thành việc thực tế bạn đã làm để nhận phần thưởng.</p>
-    <div class="stats">
-      <div class="stat"><strong id="missionDone">0/3</strong>Đã hoàn thành</div>
-      <div class="stat"><strong id="missionReward">0</strong>Hạt nhận hôm nay</div>
-      <div class="stat"><strong id="missionKarma">0</strong>Điểm hôm nay</div>
-    </div>
-    <div id="missionList"></div>
-    <p class="notice">Mỗi nhiệm vụ chỉ nhận thưởng một lần trong ngày. Hãy chọn việc bạn thực sự đã làm, không cần chạy theo điểm số.</p>
-  </div>
-  <div class="card">
-    <h2>🌼 Nguyên tắc gieo hạt</h2>
-    <p>Không cần làm điều lớn lao. Một lời hỏi thăm, một sự lắng nghe, một hành động giúp đỡ nhỏ cũng là hạt giống tốt.</p>
-  </div>
+<div class="card">
+<h2>💚 Vườn nhiệm vụ tử tế</h2>
+<p class="muted">Mỗi ngày có 3 nhiệm vụ gợi ý. Hoàn thành việc thực tế bạn đã làm để nhận phần thưởng.</p>
+<div class="stats">
+<div class="stat"><strong id="missionDone">0/3</strong>Đã hoàn thành</div>
+<div class="stat"><strong id="missionReward">0</strong>Hạt nhận hôm nay</div>
+<div class="stat"><strong id="missionKarma">0</strong>Điểm hôm nay</div>
+</div>
+<div id="missionList"></div>
+<p class="notice">Mỗi nhiệm vụ chỉ nhận thưởng một lần trong ngày. Hãy chọn việc bạn thực sự đã làm, không cần chạy theo điểm số.</p>
+</div>
+<div class="card"><h2>🌼 Nguyên tắc gieo hạt</h2><p>Không cần làm điều lớn lao. Một lời hỏi thăm, một sự lắng nghe, một hành động giúp đỡ nhỏ cũng là hạt giống tốt.</p></div>
 </section>
-
 <section id="community" class="panel">
-  <div class="card">
-    <h2>🤝 Khu vườn cộng đồng</h2>
-    <div class="quote">“Một người gieo một hạt. Nhiều người cùng gieo, thành rừng xanh.”</div>
-    <div class="stats" style="margin-top:14px">
-      <div class="stat"><strong id="communitySeeds">0</strong>Hạt đóng góp</div>
-      <div class="stat"><strong id="communityFlowers">0</strong>Bông sen</div>
-      <div class="stat"><strong>🌱</strong>Cùng vun trồng</div>
-    </div>
-    <button class="action" id="contribute">Góp một hạt cho cộng đồng</button>
-    <p id="communityMessage" class="muted"></p>
-    <p class="notice">Đây là bản thử nghiệm lưu trên trình duyệt hiện tại. Dữ liệu cộng đồng chưa đồng bộ giữa nhiều thiết bị.</p>
-  </div>
+<div class="card">
+<h2>🤝 Khu vườn cộng đồng</h2>
+<div class="quote">“Một người gieo một hạt. Nhiều người cùng gieo, thành rừng xanh.”</div>
+<div class="stats" style="margin-top:14px">
+<div class="stat"><strong id="communitySeeds">0</strong>Hạt đóng góp</div>
+<div class="stat"><strong id="communityFlowers">0</strong>Bông sen</div>
+<div class="stat"><strong>🌱</strong>Cùng vun trồng</div>
+</div>
+<button class="action" id="contribute">Góp một hạt cho cộng đồng</button>
+<p id="communityMessage" class="muted"></p>
+<p class="notice">Đây là bản thử nghiệm lưu trên trình duyệt hiện tại. Dữ liệu cộng đồng chưa đồng bộ giữa nhiều thiết bị.</p>
+</div>
 </section>
-
-<section id="achievements" class="panel">
-  <div class="card">
-    <h2>🏅 Thành tựu nhân duyên</h2>
-    <p class="muted">Huy hiệu được mở khóa theo hành trình của bạn.</p>
-    <div class="badges" id="badges"></div>
-  </div>
-</section>
-
+<section id="achievements" class="panel"><div class="card"><h2>🏅 Thành tựu nhân duyên</h2><p class="muted">Huy hiệu được mở khóa theo hành trình của bạn.</p><div class="badges" id="badges"></div></div></section>
 <section id="journal" class="panel">
-  <div class="card">
-    <h2>📖 Nhật ký việc tốt</h2>
-    <p class="muted">Ghi lại điều đẹp đẽ bạn đã làm hôm nay.</p>
-    <textarea id="journalInput" placeholder="Hôm nay tôi đã..."></textarea>
-    <button class="action" id="saveJournal">Lưu nhật ký</button>
-    <div id="journalList"></div>
-  </div>
+<div class="card"><h2>📖 Nhật ký việc tốt</h2><p class="muted">Ghi lại điều đẹp đẽ bạn đã làm hôm nay.</p><textarea id="journalInput" placeholder="Hôm nay tôi đã..."></textarea><button class="action" id="saveJournal">Lưu nhật ký</button><div id="journalList"></div></div>
 </section>
-
 <section id="mindful" class="panel">
-  <div class="card">
-    <h2>🪷 Một phút tĩnh tâm</h2>
-    <div class="quote" id="quote">Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.</div>
-    <p style="text-align:center"><button class="action" id="newQuote">Một lời nhắc khác</button></p>
-    <p class="notice">Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng. Không cần vội vàng trở thành ai khác.</p>
-  </div>
+<div class="card"><h2>🪷 Một phút tĩnh tâm</h2><div class="quote" id="quote">Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.</div><p style="text-align:center"><button class="action" id="newQuote">Một lời nhắc khác</button></p><p class="notice">Ngồi yên thoải mái. Hít vào chậm rãi, thở ra nhẹ nhàng. Không cần vội vàng trở thành ai khác.</p></div>
 </section>
 </main>
-
 <footer>🌿 Gieo một điều tốt đẹp hôm nay, để ngày mai thế giới thêm xanh.</footer>
-
 <script>
-/* ==================================================
-   KHU VUON NHAN DUYEN
-   Bao toan du lieu cu - khong xoa localStorage
-================================================== */
-
 function readStore(key,fallback){
-  try{
-    const raw=localStorage.getItem(key);
-    return raw===null?fallback:JSON.parse(raw);
-  }catch(e){return fallback}
+ try{const raw=localStorage.getItem(key);return raw===null?fallback:JSON.parse(raw)}
+ catch(e){return fallback}
 }
 function save(key,value){localStorage.setItem(key,JSON.stringify(value))}
 function today(){
-  const d=new Date();
-  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+ const d=new Date();
+ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 function safeNumber(value,fallback=0){
-  const n=Number(value);
-  return Number.isFinite(n)&&n>=0?n:fallback;
+ const n=Number(value);return Number.isFinite(n)&&n>=0?n:fallback;
 }
 
-/* DU LIEU CU: GIU NGUYEN CAC KEY */
+/* GIU NGUYEN DU LIEU CU */
 let days=safeNumber(localStorage.getItem('gardenDays'),0);
 let seeds=safeNumber(localStorage.getItem('gardenSeeds'),0);
 let lastDate=localStorage.getItem('gardenLastDate')||'';
@@ -297,8 +219,6 @@ if(!Array.isArray(journal))journal=[];
 let completed=readStore('gardenTaskDates',[]);
 if(!Array.isArray(completed))completed=[];
 let selectedTask=safeNumber(readStore('gardenSelectedTask',0));
-
-/* DU LIEU BO SUNG */
 let karma=safeNumber(readStore('gardenKarma',0));
 let streak=safeNumber(readStore('gardenStreak',0));
 let streakDate=readStore('gardenStreakDate','');
@@ -310,26 +230,38 @@ let carePoints=safeNumber(readStore('gardenCarePoints',0));
 let careDates=readStore('gardenCareDates',[]);
 if(!Array.isArray(careDates))careDates=[];
 
-/* CAC CAP DO MOI */
+/* DANH DAU VA CONG BU PHAN THUONG CU MOT LAN */
+function migrateMissionRewards(){
+ const marker='gardenMissionSeedSyncV1';
+ if(localStorage.getItem(marker)==='done')return;
+ const oldToday=missionHistory[today()];
+ const alreadyCompleted=Array.isArray(oldToday)?oldToday.length:0;
+ if(alreadyCompleted>0){
+   seeds+=alreadyCompleted;
+   localStorage.setItem('gardenSeeds',String(seeds));
+ }
+ localStorage.setItem(marker,'done');
+}
+migrateMissionRewards();
+
 const levels=[
-  {min:0,level:1,name:'Hạt giống',emoji:'🌰',note:'Một hành trình tốt đẹp bắt đầu từ một hạt giống nhỏ.',flowers:'',unlock:'Khu đất khởi đầu'},
-  {min:1,level:2,name:'Mầm non',emoji:'🌱',note:'Mầm non đang lớn lên từng ngày.',flowers:'',unlock:'Mầm cây đầu tiên'},
-  {min:3,level:3,name:'Cây con',emoji:'🌿',note:'Những chiếc lá non đang vươn mình đón nắng.',flowers:'🌼',unlock:'Khóm hoa đầu tiên'},
-  {min:6,level:4,name:'Cây trưởng thành',emoji:'🌳',note:'Tán cây đã rộng hơn, chim nhỏ ghé thăm.',flowers:'🌸 🌼',unlock:'Chim về làm tổ'},
-  {min:10,level:5,name:'Cây nở hoa',emoji:'🌳',note:'Những bông hoa đầu tiên đã nở rực rỡ.',flowers:'🌸 🌺 🌸',unlock:'Vườn hoa nở rộ'},
-  {min:20,level:6,name:'Cổ thụ nhân duyên',emoji:'🌳',note:'Cổ thụ tỏa bóng mát, khu vườn thêm trù phú.',flowers:'🌸 🌺 🌼 🌸',unlock:'Cổ thụ và hồ sen'},
-  {min:35,level:7,name:'Khu vườn an lành',emoji:'🌳',note:'Bướm chim tìm về, hoa sen khoe sắc.',flowers:'🌸 🌺 🌼 🪷',unlock:'Hồ sen lung linh'},
-  {min:50,level:8,name:'Vườn nhân duyên',emoji:'🌳',note:'Bạn đã vun trồng một khu vườn của lòng tốt.',flowers:'🌸 🌺 🌼 🪷 🌷',unlock:'Khu vườn viên mãn'}
+ {min:0,level:1,name:'Hạt giống',emoji:'🌰',note:'Một hành trình tốt đẹp bắt đầu từ một hạt giống nhỏ.',flowers:'',unlock:'Khu đất khởi đầu'},
+ {min:1,level:2,name:'Mầm non',emoji:'🌱',note:'Mầm non đang lớn lên từng ngày.',flowers:'',unlock:'Mầm cây đầu tiên'},
+ {min:3,level:3,name:'Cây con',emoji:'🌿',note:'Những chiếc lá non đang vươn mình đón nắng.',flowers:'🌼',unlock:'Khóm hoa đầu tiên'},
+ {min:6,level:4,name:'Cây trưởng thành',emoji:'🌳',note:'Tán cây đã rộng hơn, chim nhỏ ghé thăm.',flowers:'🌸 🌼',unlock:'Chim về làm tổ'},
+ {min:10,level:5,name:'Cây nở hoa',emoji:'🌳',note:'Những bông hoa đầu tiên đã nở rực rỡ.',flowers:'🌸 🌺 🌸',unlock:'Vườn hoa nở rộ'},
+ {min:20,level:6,name:'Cổ thụ nhân duyên',emoji:'🌳',note:'Cổ thụ tỏa bóng mát, khu vườn thêm trù phú.',flowers:'🌸 🌺 🌼 🌸',unlock:'Cổ thụ và hồ sen'},
+ {min:35,level:7,name:'Khu vườn an lành',emoji:'🌳',note:'Bướm chim tìm về, hoa sen khoe sắc.',flowers:'🌸 🌺 🌼 🪷',unlock:'Hồ sen lung linh'},
+ {min:50,level:8,name:'Vườn nhân duyên',emoji:'🌳',note:'Bạn đã vun trồng một khu vườn của lòng tốt.',flowers:'🌸 🌺 🌼 🪷 🌷',unlock:'Khu vườn viên mãn'}
 ];
 function levelInfo(){
-  let result=levels[0];
-  for(const item of levels){if(seeds>=item.min)result=item}
-  const next=levels.find(item=>item.min>seeds);
-  const progress=next?((seeds-result.min)/(next.min-result.min))*100:100;
-  return {...result,progress,next};
+ let result=levels[0];
+ for(const item of levels){if(seeds>=item.min)result=item}
+ const next=levels.find(item=>item.min>seeds);
+ const progress=next?((seeds-result.min)/(next.min-result.min))*100:100;
+ return {...result,progress,next};
 }
 
-/* NHIEM VU */
 const taskBank=[
  {icon:'☎️',title:'Gọi điện hỏi thăm cha mẹ',desc:'Dành vài phút hỏi thăm sức khỏe và trò chuyện với cha mẹ.',karma:5},
  {icon:'🤝',title:'Giúp đỡ một người',desc:'Chủ động giúp một người đang cần sự hỗ trợ.',karma:5},
@@ -345,171 +277,134 @@ const taskBank=[
  {icon:'📵',title:'Bớt một khoảng thời gian màn hình',desc:'Dành thời gian đó cho gia đình hoặc thiên nhiên.',karma:3}
 ];
 function dailyMissions(){
-  const key=today();let seed=0;
-  for(let i=0;i<key.length;i++)seed=(seed*31+key.charCodeAt(i))>>>0;
-  const pool=taskBank.slice(),chosen=[];
-  for(let i=0;i<3;i++){
-    seed=(seed*1664525+1013904223)>>>0;
-    chosen.push(pool.splice(seed%pool.length,1)[0]);
-  }
-  return chosen;
+ const key=today();let seed=0;
+ for(let i=0;i<key.length;i++)seed=(seed*31+key.charCodeAt(i))>>>0;
+ const pool=taskBank.slice(),chosen=[];
+ for(let i=0;i<3;i++){seed=(seed*1664525+1013904223)>>>0;chosen.push(pool.splice(seed%pool.length,1)[0])}
+ return chosen;
 }
 let missions=dailyMissions();
-function completedToday(){
-  return Array.isArray(missionHistory[today()])?missionHistory[today()]:[];
-}
+function completedToday(){return Array.isArray(missionHistory[today()])?missionHistory[today()]:[]}
 
-/* CHUOI NGAY */
 function updateStreak(){
-  const t=today();
-  if(streakDate===t)return;
-  const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
-  const key=yesterday.getFullYear()+'-'+String(yesterday.getMonth()+1).padStart(2,'0')+'-'+String(yesterday.getDate()).padStart(2,'0');
-  streak=streakDate===key?streak+1:1;
-  streakDate=t;
-  save('gardenStreak',streak);save('gardenStreakDate',streakDate);
+ const t=today();if(streakDate===t)return;
+ const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
+ const key=yesterday.getFullYear()+'-'+String(yesterday.getMonth()+1).padStart(2,'0')+'-'+String(yesterday.getDate()).padStart(2,'0');
+ streak=streakDate===key?streak+1:1;streakDate=t;
+ save('gardenStreak',streak);save('gardenStreakDate',streakDate);
 }
 
-/* NGAY VA DEM */
 let manualScene=null;
 function updateDayNight(){
-  const hour=new Date().getHours();
-  const isDay=manualScene===null?(hour>=6&&hour<18):manualScene==='day';
-  document.getElementById('scene').classList.toggle('day',isDay);
-  document.getElementById('toggleDay').textContent=isDay?'🌙 Chuyển ban đêm':'☀️ Chuyển ban ngày';
-  document.getElementById('caption').textContent=isDay?'Ánh nắng dịu dàng đang chăm sóc khu vườn':'Ánh trăng soi sáng khu vườn bình yên';
-  document.getElementById('sceneLabel').textContent=isDay?'☀️ Khu vườn ban ngày':'🌙 Khu vườn đêm';
+ const hour=new Date().getHours();
+ const isDay=manualScene===null?(hour>=6&&hour<18):manualScene==='day';
+ document.getElementById('scene').classList.toggle('day',isDay);
+ document.getElementById('toggleDay').textContent=isDay?'🌙 Chuyển ban đêm':'☀️ Chuyển ban ngày';
+ document.getElementById('caption').textContent=isDay?'Ánh nắng dịu dàng đang chăm sóc khu vườn':'Ánh trăng soi sáng khu vườn bình yên';
+ document.getElementById('sceneLabel').textContent=isDay?'☀️ Khu vườn ban ngày':'🌙 Khu vườn đêm';
 }
 document.getElementById('toggleDay').addEventListener('click',()=>{
-  manualScene=document.getElementById('scene').classList.contains('day')?'night':'day';
-  updateDayNight();
+ manualScene=document.getElementById('scene').classList.contains('day')?'night':'day';updateDayNight();
 });
-updateDayNight();
-setInterval(()=>{if(manualScene===null)updateDayNight()},60000);
+updateDayNight();setInterval(()=>{if(manualScene===null)updateDayNight()},60000);
 
-/* VE KHU VUON THEO CAP DO */
 function renderGarden(){
-  const info=levelInfo();
-  document.getElementById('tree').textContent=info.emoji;
-  document.getElementById('treeFlowers').textContent=info.flowers;
-  document.getElementById('lotus').textContent=seeds>=20?'🪷　🌸　🪷':'🌸　🌸';
-  document.getElementById('mountains').textContent=seeds>=35?'🏔️　⛰️　🏔️':'⛰️　🏔️　⛰️';
-  document.querySelectorAll('.lantern').forEach(el=>el.style.opacity=seeds>=6?'1':'.45');
-  document.querySelectorAll('.butterfly').forEach(el=>el.style.display=seeds>=3?'block':'none');
-  document.querySelectorAll('.bird').forEach(el=>el.style.display=seeds>=6?'block':'none');
-  document.querySelectorAll('.flower').forEach(el=>el.style.opacity=seeds>=3?'1':'.45');
+ const info=levelInfo();
+ document.getElementById('tree').textContent=info.emoji;
+ document.getElementById('treeFlowers').textContent=info.flowers;
+ document.getElementById('lotus').textContent=seeds>=20?'🪷　🌸　🪷':'🌸　🌸';
+ document.getElementById('mountains').textContent=seeds>=35?'🏔️　⛰️　🏔️':'⛰️　🏔️　⛰️';
+ document.querySelectorAll('.lantern').forEach(el=>el.style.opacity=seeds>=6?'1':'.45');
+ document.querySelectorAll('.butterfly').forEach(el=>el.style.display=seeds>=3?'block':'none');
+ document.querySelectorAll('.bird').forEach(el=>el.style.display=seeds>=6?'block':'none');
+ document.querySelectorAll('.flower').forEach(el=>el.style.opacity=seeds>=3?'1':'.45');
 }
 function renderUnlocks(){
-  const list=[
-    ['🌱','Mầm cây',1],['🌼','Khóm hoa',3],['🐦','Chim về vườn',6],
-    ['🏮','Đèn lồng',6],['🌺','Vườn hoa',10],['🪷','Hồ sen',20],
-    ['🏔️','Núi xanh',35],['✨','Vườn viên mãn',50]
-  ];
-  document.getElementById('unlockList').innerHTML=list.map(x=>
-    `<div class="unlock-item ${seeds>=x[2]?'':'locked'}"><span>${x[0]}</span><strong>${x[1]}</strong><div class="notice">${seeds>=x[2]?'Đã mở khóa':'Cần '+x[2]+' hạt'}</div></div>`
-  ).join('');
+ const list=[['🌱','Mầm cây',1],['🌼','Khóm hoa',3],['🐦','Chim về vườn',6],['🏮','Đèn lồng',6],['🌺','Vườn hoa',10],['🪷','Hồ sen',20],['🏔️','Núi xanh',35],['✨','Vườn viên mãn',50]];
+ document.getElementById('unlockList').innerHTML=list.map(x=>`<div class="unlock-item ${seeds>=x[2]?'':'locked'}"><span>${x[0]}</span><strong>${x[1]}</strong><div class="notice">${seeds>=x[2]?'Đã mở khóa':'Cần '+x[2]+' hạt'}</div></div>`).join('');
 }
-
-/* HIEN THI NHIEM VU */
 function renderMissions(){
-  const done=completedToday(),list=document.getElementById('missionList');
-  list.innerHTML=missions.map((m,i)=>`
-    <div class="mission ${done.includes(i)?'done':''}">
-      <div class="symbol">${m.icon}</div>
-      <div class="detail">
-        <strong>${m.title} ${done.includes(i)?'✓':''}</strong>
-        <small>${m.desc}</small>
-        <div class="reward">🎁 Thưởng: 1 hạt giống + ${m.karma} điểm nhân duyên</div>
-      </div>
-      <button class="action ${done.includes(i)?'secondary':''}" data-mission="${i}" ${done.includes(i)?'disabled':''}>${done.includes(i)?'Đã nhận':'Hoàn thành'}</button>
-    </div>`).join('');
-  list.querySelectorAll('[data-mission]').forEach(button=>{
-    button.addEventListener('click',()=>completeMission(Number(button.dataset.mission)));
-  });
-  const count=done.length;
-  document.getElementById('missionDone').textContent=count+'/3';
-  document.getElementById('missionReward').textContent=count;
-  document.getElementById('missionKarma').textContent=missions.reduce((sum,m,i)=>sum+(done.includes(i)?m.karma:0),0);
-  document.getElementById('todaySummary').textContent=count===3?'Bạn đã hoàn thành cả 3 nhiệm vụ hôm nay. Thật tuyệt!':`Bạn đã hoàn thành ${count}/3 nhiệm vụ hôm nay. Mỗi việc tốt đều đáng trân trọng.`;
-}
-function completeMission(index){
-  if(index<0||index>=missions.length)return;
-  const done=completedToday();if(done.includes(index))return;
-  done.push(index);missionHistory[today()]=done;
-  save('gardenMissionCompletions',missionHistory);
-  seeds++;karma+=missions[index].karma;
-  if(lastDate!==today()){
-    days++;lastDate=today();
-    localStorage.setItem('gardenDays',String(days));
-    localStorage.setItem('gardenLastDate',lastDate);
-    updateStreak();
-  }
-  localStorage.setItem('gardenSeeds',String(seeds));
-  save('gardenKarma',karma);
-  render();
-  alert('🌱 Bạn đã nhận 1 hạt giống và '+missions[index].karma+' điểm nhân duyên. Cảm ơn bạn đã gieo điều tốt đẹp!');
+ const done=completedToday(),list=document.getElementById('missionList');
+ list.innerHTML=missions.map((m,i)=>`
+ <div class="mission ${done.includes(i)?'done':''}">
+ <div class="symbol">${m.icon}</div><div class="detail">
+ <strong>${m.title} ${done.includes(i)?'✓':''}</strong><small>${m.desc}</small>
+ <div class="reward">🎁 Thưởng: 1 hạt giống + ${m.karma} điểm nhân duyên</div></div>
+ <button class="action ${done.includes(i)?'secondary':''}" data-mission="${i}" ${done.includes(i)?'disabled':''}>${done.includes(i)?'Đã nhận':'Hoàn thành'}</button>
+ </div>`).join('');
+ list.querySelectorAll('[data-mission]').forEach(button=>button.addEventListener('click',()=>completeMission(Number(button.dataset.mission))));
+ const count=done.length;
+ document.getElementById('missionDone').textContent=count+'/3';
+ document.getElementById('missionReward').textContent=count;
+ document.getElementById('missionKarma').textContent=missions.reduce((sum,m,i)=>sum+(done.includes(i)?m.karma:0),0);
+ document.getElementById('todaySummary').textContent=count===3?'Bạn đã hoàn thành cả 3 nhiệm vụ hôm nay. Thật tuyệt!':`Bạn đã hoàn thành ${count}/3 nhiệm vụ hôm nay. Mỗi việc tốt đều đáng trân trọng.`;
 }
 
-/* CHAM SOC CAY - MOI NGAY MOT LAN */
+/* NHAN THUONG MOI NHIEM VU MOT LAN */
+function completeMission(index){
+ if(index<0||index>=missions.length)return;
+ const done=completedToday();if(done.includes(index))return;
+ done.push(index);missionHistory[today()]=done;
+ save('gardenMissionCompletions',missionHistory);
+ seeds++;karma+=missions[index].karma;
+ if(lastDate!==today()){
+  days++;lastDate=today();
+  localStorage.setItem('gardenDays',String(days));
+  localStorage.setItem('gardenLastDate',lastDate);
+  updateStreak();
+ }
+ localStorage.setItem('gardenSeeds',String(seeds));
+ save('gardenKarma',karma);
+ render();
+ alert('🌱 Bạn đã nhận 1 hạt giống và '+missions[index].karma+' điểm nhân duyên. Cảm ơn bạn đã gieo điều tốt đẹp!');
+}
+
 document.getElementById('careButton').addEventListener('click',()=>{
-  const key=today();
-  if(careDates.includes(key)){
-    document.getElementById('careMessage').textContent='Hôm nay bạn đã tưới cây rồi. Ngày mai hãy quay lại nhé!';
-    return;
-  }
-  careDates.push(key);carePoints++;
-  save('gardenCareDates',careDates);save('gardenCarePoints',carePoints);
-  document.getElementById('careMessage').textContent='🌿 Cây đã được tưới nước. Cảm ơn bạn đã chăm sóc khu vườn!';
-  render();
+ const key=today();
+ if(careDates.includes(key)){document.getElementById('careMessage').textContent='Hôm nay bạn đã tưới cây rồi. Ngày mai hãy quay lại nhé!';return}
+ careDates.push(key);carePoints++;
+ save('gardenCareDates',careDates);save('gardenCarePoints',carePoints);
+ document.getElementById('careMessage').textContent='🌿 Cây đã được tưới nước. Cảm ơn bạn đã chăm sóc khu vườn!';
+ render();
 });
 
-/* THANH TUU */
 function renderBadges(){
-  const list=[
-    ['🌱','Hạt giống đầu tiên',seeds>=1],['🌿','Mầm xanh',seeds>=3],
-    ['🌳','Cây trưởng thành',seeds>=6],['🌺','Hoa nhân duyên',seeds>=10],
-    ['🦋','Vườn bướm về',seeds>=10],['🪷','Hồ sen an lành',seeds>=20],
-    ['🏔️','Núi xanh',seeds>=35],['✨','Vườn viên mãn',seeds>=50],
-    ['🔥','Bền bỉ 3 ngày',streak>=3],['🏅','Bền bỉ 7 ngày',streak>=7],
-    ['🤝','Người gieo hạt cộng đồng',community>=1],['💛','Tấm lòng rộng mở',karma>=50],
-    ['🌟','Người gieo duyên lành',seeds>=30],['💧','Người chăm vườn',carePoints>=5],
-    ['🪷','Tâm an',karma>=100],['🌳','Bậc vun trồng',seeds>=100]
-  ];
-  document.getElementById('badges').innerHTML=list.map(b=>
-    `<div class="badgebox ${b[2]?'':'locked'}"><span>${b[0]}</span>${b[1]}</div>`
-  ).join('');
+ const list=[
+ ['🌱','Hạt giống đầu tiên',seeds>=1],['🌿','Mầm xanh',seeds>=3],['🌳','Cây trưởng thành',seeds>=6],
+ ['🌺','Hoa nhân duyên',seeds>=10],['🦋','Vườn bướm về',seeds>=10],['🪷','Hồ sen an lành',seeds>=20],
+ ['🏔️','Núi xanh',seeds>=35],['✨','Vườn viên mãn',seeds>=50],['🔥','Bền bỉ 3 ngày',streak>=3],
+ ['🏅','Bền bỉ 7 ngày',streak>=7],['🤝','Người gieo hạt cộng đồng',community>=1],
+ ['💛','Tấm lòng rộng mở',karma>=50],['🌟','Người gieo duyên lành',seeds>=30],
+ ['💧','Người chăm vườn',carePoints>=5],['🪷','Tâm an',karma>=100],['🌳','Bậc vun trồng',seeds>=100]
+ ];
+ document.getElementById('badges').innerHTML=list.map(b=>`<div class="badgebox ${b[2]?'':'locked'}"><span>${b[0]}</span>${b[1]}</div>`).join('');
 }
-
-/* NHAT KY */
 function escapeHTML(value){
-  return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function renderJournal(){
-  document.getElementById('journalList').innerHTML=journal.slice().reverse().map(item=>{
-    if(typeof item==='string')return `<div class="entry">${escapeHTML(item)}</div>`;
-    return `<div class="entry"><strong>${escapeHTML(item.date||'Nhật ký')}</strong><p>${escapeHTML(item.text||'')}</p></div>`;
-  }).join('')||'<p class="muted">Chưa có ghi chép nào. Hãy lưu điều tốt đẹp đầu tiên.</p>';
+ document.getElementById('journalList').innerHTML=journal.slice().reverse().map(item=>{
+  if(typeof item==='string')return `<div class="entry">${escapeHTML(item)}</div>`;
+  return `<div class="entry"><strong>${escapeHTML(item.date||'Nhật ký')}</strong><p>${escapeHTML(item.text||'')}</p></div>`;
+ }).join('')||'<p class="muted">Chưa có ghi chép nào. Hãy lưu điều tốt đẹp đầu tiên.</p>';
 }
 document.getElementById('saveJournal').addEventListener('click',()=>{
-  const input=document.getElementById('journalInput'),text=input.value.trim();
-  if(!text){alert('Bạn hãy viết vài dòng trước khi lưu nhé.');return}
-  journal.push({date:new Date().toLocaleDateString('vi-VN'),text});
-  save('gardenJournal',journal);input.value='';renderJournal();
-  alert('📖 Nhật ký đã được lưu trên thiết bị này.');
+ const input=document.getElementById('journalInput'),text=input.value.trim();
+ if(!text){alert('Bạn hãy viết vài dòng trước khi lưu nhé.');return}
+ journal.push({date:new Date().toLocaleDateString('vi-VN'),text});
+ save('gardenJournal',journal);input.value='';renderJournal();
+ alert('📖 Nhật ký đã được lưu trên thiết bị này.');
 });
 
-/* CONG DONG THU NGHIEM */
 document.getElementById('contribute').addEventListener('click',()=>{
-  if(seeds<1){document.getElementById('communityMessage').textContent='Hãy gieo ít nhất một hạt tử tế trước nhé.';return}
-  const key=today();
-  if(communityContributed.includes(key)){document.getElementById('communityMessage').textContent='Bạn đã đóng góp hạt hôm nay rồi. Hẹn gặp lại ngày mai!';return}
-  community++;communityContributed.push(key);
-  save('gardenCommunitySeeds',community);save('gardenContributionDates',communityContributed);
-  document.getElementById('communityMessage').textContent='🌱 Cảm ơn bạn đã góp một hạt lành cho khu vườn!';
-  render();
+ if(seeds<1){document.getElementById('communityMessage').textContent='Hãy gieo ít nhất một hạt tử tế trước nhé.';return}
+ const key=today();
+ if(communityContributed.includes(key)){document.getElementById('communityMessage').textContent='Bạn đã đóng góp hạt hôm nay rồi. Hẹn gặp lại ngày mai!';return}
+ community++;communityContributed.push(key);
+ save('gardenCommunitySeeds',community);save('gardenContributionDates',communityContributed);
+ document.getElementById('communityMessage').textContent='🌱 Cảm ơn bạn đã góp một hạt lành cho khu vườn!';
+ render();
 });
-
-/* TINH TAM */
 const quotes=[
  'Thở vào, tôi biết mình đang thở vào. Thở ra, tôi mỉm cười.',
  'Chậm lại một chút, ta sẽ thấy điều bình dị cũng rất đẹp.',
@@ -519,39 +414,36 @@ const quotes=[
  'Hãy để lòng mình nhẹ như một chiếc lá trôi trên mặt hồ.'
 ];
 document.getElementById('newQuote').addEventListener('click',()=>{
-  const current=document.getElementById('quote').textContent;
-  const options=quotes.filter(q=>q!==current);
-  document.getElementById('quote').textContent=options[Math.floor(Math.random()*options.length)];
+ const current=document.getElementById('quote').textContent;
+ const options=quotes.filter(q=>q!==current);
+ document.getElementById('quote').textContent=options[Math.floor(Math.random()*options.length)];
 });
-
-/* DIEU HUONG */
 function showTab(id){
-  document.querySelectorAll('nav button').forEach(button=>button.classList.toggle('active',button.dataset.tab===id));
-  document.querySelectorAll('.panel').forEach(panel=>panel.classList.toggle('active',panel.id===id));
-  window.scrollTo({top:0,behavior:'smooth'});
+ document.querySelectorAll('nav button').forEach(button=>button.classList.toggle('active',button.dataset.tab===id));
+ document.querySelectorAll('.panel').forEach(panel=>panel.classList.toggle('active',panel.id===id));
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('nav button').forEach(button=>button.addEventListener('click',()=>showTab(button.dataset.tab)));
 
-/* CAP NHAT TONG QUAN */
 function render(){
-  const info=levelInfo();
-  document.getElementById('days').textContent=days;
-  document.getElementById('seeds').textContent=seeds;
-  document.getElementById('level').textContent=info.level;
-  document.getElementById('stage').textContent=info.emoji+' '+info.name;
-  document.getElementById('progress').style.width=Math.max(0,Math.min(100,info.progress))+'%';
-  document.getElementById('nextText').textContent=info.next?`Còn ${info.next.min-seeds} hạt nữa để mở cấp ${info.next.level}: ${info.next.name}.`:'Bạn đã mở khóa cấp độ cao nhất!';
-  document.getElementById('levelNote').textContent=info.note;
-  document.getElementById('karma').textContent=karma;
-  document.getElementById('streak').textContent=streak;
-  document.getElementById('carePoints').textContent=carePoints;
-  document.getElementById('communitySeeds').textContent=community;
-  document.getElementById('communityFlowers').textContent=Math.floor(community/5);
-  const cared=careDates.includes(today());
-  document.getElementById('careButton').disabled=cared;
-  document.getElementById('careButton').textContent=cared?'✓ Đã tưới hôm nay':'💧 Tưới cây';
-  if(cared)document.getElementById('careMessage').textContent='Hôm nay khu vườn đã được bạn chăm sóc.';
-  renderGarden();renderUnlocks();renderMissions();renderBadges();renderJournal();
+ const info=levelInfo();
+ document.getElementById('days').textContent=days;
+ document.getElementById('seeds').textContent=seeds;
+ document.getElementById('level').textContent=info.level;
+ document.getElementById('stage').textContent=info.emoji+' '+info.name;
+ document.getElementById('progress').style.width=Math.max(0,Math.min(100,info.progress))+'%';
+ document.getElementById('nextText').textContent=info.next?`Còn ${info.next.min-seeds} hạt nữa để mở cấp ${info.next.level}: ${info.next.name}.`:'Bạn đã mở khóa cấp độ cao nhất!';
+ document.getElementById('levelNote').textContent=info.note;
+ document.getElementById('karma').textContent=karma;
+ document.getElementById('streak').textContent=streak;
+ document.getElementById('carePoints').textContent=carePoints;
+ document.getElementById('communitySeeds').textContent=community;
+ document.getElementById('communityFlowers').textContent=Math.floor(community/5);
+ const cared=careDates.includes(today());
+ document.getElementById('careButton').disabled=cared;
+ document.getElementById('careButton').textContent=cared?'✓ Đã tưới hôm nay':'💧 Tưới cây';
+ if(cared)document.getElementById('careMessage').textContent='Hôm nay khu vườn đã được bạn chăm sóc.';
+ renderGarden();renderUnlocks();renderMissions();renderBadges();renderJournal();
 }
 render();
 </script>
