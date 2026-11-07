@@ -23,11 +23,132 @@ main{max-width:950px;margin:auto;padding:14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
 .stat{background:#edf1df;border-radius:12px;padding:12px}
 .stat strong{display:block;font-size:25px;color:var(--g)}
-.scene{height:350px;border-radius:20px;position:relative;overflow:hidden;text-align:center;padding-top:30px;color:white;background:linear-gradient(#172747,#9aab83 70%,#39766a)}
-.scene.day{background:linear-gradient(#73b9df,#e0e8ad 70%,#579260)}
-.tree{font-size:100px;margin-top:65px}
-.pond{position:absolute;bottom:0;width:100%;background:#39766a;padding:15px;font-size:30px}
-.muted,.notice{color:#71816d}
+
+.scene{
+  position:relative;
+  height:520px;
+  min-height:520px;
+  overflow:hidden;
+  border-radius:24px;
+  border:2px solid #d8bd78;
+  isolation:isolate;
+  color:white;
+  text-align:center;
+  background:linear-gradient(#172747 0%,#526f7b 42%,#a9bd91 72%,#39766a 100%);
+}
+.scene.day{
+  background:linear-gradient(#73b9df 0%,#c4e6dc 43%,#e0e8ad 72%,#579260 100%);
+}
+.scene h2{
+  position:relative;
+  z-index:10;
+  padding-top:35px;
+  color:white;
+  text-shadow:0 2px 6px #234;
+}
+.scene p{
+  position:relative;
+  z-index:10;
+  color:white;
+}
+.tree{
+  position:absolute;
+  z-index:7;
+  right:12%;
+  bottom:95px;
+  font-size:145px;
+  filter:drop-shadow(0 5px 8px #2348);
+  animation:growTree 4s infinite ease-in-out;
+}
+@keyframes growTree{
+  50%{transform:scale(1.06)}
+}
+.pond{
+  position:absolute;
+  z-index:5;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:105px;
+  padding:12px;
+  background:linear-gradient(#7eb7a9,#39766a);
+  border-top:3px solid #d5dfab;
+  font-size:34px;
+}
+.scene .temple{
+  position:absolute;
+  left:9%;
+  bottom:105px;
+  z-index:6;
+  font-size:65px;
+}
+.scene .mountains{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:115px;
+  z-index:2;
+  font-size:75px;
+}
+.scene .butterfly{
+  position:absolute;
+  z-index:9;
+  font-size:28px;
+  animation:flyButterfly 8s infinite ease-in-out;
+}
+.scene .butterfly.one{left:12%;top:45%}
+.scene .butterfly.two{left:45%;top:55%;animation-delay:2s}
+.scene .butterfly.three{right:18%;top:38%;animation-delay:4s}
+@keyframes flyButterfly{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(35px,-25px)}
+}
+.scene .bird{
+  position:absolute;
+  z-index:9;
+  right:25%;
+  bottom:205px;
+  font-size:30px;
+}
+.scene .flowers{
+  position:absolute;
+  z-index:8;
+  left:25%;
+  bottom:110px;
+  font-size:30px;
+}
+.scene .stars{
+  position:absolute;
+  z-index:1;
+  top:12%;
+  left:10%;
+  right:10%;
+  color:#fff3b0;
+  font-size:22px;
+  letter-spacing:16px;
+}
+.scene .sun{
+  position:absolute;
+  top:95px;
+  right:15%;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#fff0ae;
+  box-shadow:0 0 30px 10px #fff0ae88;
+}
+.scene .daynight-control{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:20;
+}
+@media(max-width:600px){
+  .scene{height:460px;min-height:460px}
+  .tree{font-size:110px}
+  .scene .temple{font-size:48px}
+}
+
 .notice{font-size:13px}
 .auth input,textarea{width:100%;padding:12px;border:1px solid #bdcbb4;border-radius:10px;margin:5px 0}
 .authgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -76,13 +197,30 @@ footer{text-align:center;color:#eee;padding:20px}
 
 <main>
 <section id="garden" class="panel active">
+
 <div class="scene" id="scene">
-<button id="daynight">🌙 Ngày/đêm</button>
-<h2>Khu vườn của bạn</h2>
-<p>Mỗi việc tốt là một hạt giống lành.</p>
-<div class="tree" id="tree">🌱</div>
-<div class="pond">🪷　🌸　🪷</div>
+  <div class="stars">✦　✧　✦　✧　✦　✧　✦</div>
+  <div class="sun"></div>
+
+  <button id="daynight" class="daynight-control">🌙 Ngày/đêm</button>
+
+  <h2>Khu vườn của bạn</h2>
+  <p>Mỗi việc tốt là một hạt giống lành.</p>
+
+  <div class="mountains">⛰️　🏔️　⛰️</div>
+  <div class="temple">🛕</div>
+  <div class="tree" id="tree">🌳</div>
+
+  <div class="bird">🐦</div>
+  <div class="flowers">🌸 🌼 🌺 🌷</div>
+
+  <span class="butterfly one">🦋</span>
+  <span class="butterfly two">🦋</span>
+  <span class="butterfly three">🦋</span>
+
+  <div class="pond" id="pond">🌸　🪷　🌸　🪷</div>
 </div>
+
 <div class="card">
 <h2>🌸 Hành trình của bạn</h2>
 <div class="stats">
