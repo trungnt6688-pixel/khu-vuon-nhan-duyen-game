@@ -143,6 +143,158 @@ main{max-width:950px;margin:auto;padding:14px}
   right:12px;
   z-index:20;
 }
+/* NANG CAP KHU VUON NHAN DUYEN */
+.scene {
+  box-shadow: 0 14px 35px #102c2a55, inset 0 -18px 35px #ffffff18;
+}
+
+/* Them doi co xanh */
+.scene:before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 88px;
+  height: 105px;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at 15% 100%, #6f9b58 0 35%, transparent 36%),
+    radial-gradient(ellipse at 45% 100%, #86a85e 0 38%, transparent 39%),
+    radial-gradient(ellipse at 82% 100%, #638f52 0 36%, transparent 37%);
+  pointer-events: none;
+}
+
+/* Hoa tren cay */
+.scene .tree:before {
+  content: "🌺";
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  font-size: 25px;
+  animation: blossomSway 3s ease-in-out infinite;
+}
+
+.scene .tree:after {
+  content: "✨";
+  position: absolute;
+  top: 35px;
+  right: 8px;
+  font-size: 22px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Chim bay */
+.scene .bird {
+  animation: birdHop 5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 2px #183b35);
+}
+
+.scene .bird:after {
+  content: "🐦";
+  position: absolute;
+  left: -155px;
+  top: -75px;
+  font-size: 23px;
+  animation: birdFly 10s linear infinite;
+}
+
+/* Hoa rung trong gio */
+.scene .flowers {
+  animation: blossomSway 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 2px #315b3b);
+}
+
+/* Mat nuoc ho sen */
+.scene .pond {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 25% 25%, #b5e7d566 0 2px, transparent 3px),
+    radial-gradient(ellipse at 75% 65%, #d6fff066 0 2px, transparent 3px),
+    linear-gradient(180deg, #79bdb2, #397d78 75%, #28665f);
+  background-size: 35px 28px, 48px 36px, auto;
+}
+
+/* Ca boi trong ho */
+.scene .pond:before {
+  content: "🐟";
+  position: absolute;
+  left: 12%;
+  top: 42px;
+  font-size: 25px;
+  animation: fishSwim 11s linear infinite;
+}
+
+.scene .pond:after {
+  content: "🐠";
+  position: absolute;
+  right: 12%;
+  top: 58px;
+  font-size: 23px;
+  animation: fishSwimBack 13s linear infinite;
+}
+
+/* Anh sang ngay dem */
+.scene.day .sun {
+  background: #fff3a8;
+  box-shadow: 0 0 38px 14px #fff2a877;
+}
+
+.scene.day .stars {
+  opacity: .18;
+}
+
+.scene.day .pond {
+  filter: brightness(1.12);
+}
+
+.scene:not(.day) .sun {
+  background: #f5f1d4;
+  box-shadow: 0 0 28px 9px #e9eddf66;
+}
+
+.scene:not(.day) .stars {
+  opacity: 1;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Chuyen dong */
+@keyframes fishSwim {
+  0% { transform: translateX(-30px); }
+  48% { transform: translateX(560px); }
+  50% { transform: translateX(560px) scaleX(-1); }
+  98% { transform: translateX(-30px) scaleX(-1); }
+  100% { transform: translateX(-30px); }
+}
+
+@keyframes fishSwimBack {
+  0% { transform: translateX(30px); }
+  48% { transform: translateX(-560px); }
+  50% { transform: translateX(-560px) scaleX(-1); }
+  98% { transform: translateX(30px) scaleX(-1); }
+  100% { transform: translateX(30px); }
+}
+
+@keyframes birdHop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes birdFly {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(150px, -35px); }
+  100% { transform: translate(310px, 5px); }
+}
+
+@keyframes blossomSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
 @media(max-width:600px){
   .scene{height:460px;min-height:460px}
   .tree{font-size:110px}
